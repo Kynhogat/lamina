@@ -1,0 +1,15 @@
+:root {
+  --bg: 7 8 7;
+  --panel: 12 15 12;
+  --neon: 21 255 0;
+  --mint: 240 255 240;
+  --graphite: 83 83 83;
+
+
+  --line: 240 255 240;
+}
+
+::selection {
+  background: rgb(var(--neon));
+  color: #000;
+}
