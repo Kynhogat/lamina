@@ -56,3 +56,9 @@ export function mockSearch(opts: {
 
   return filtered.slice(skip, skip + take);
 }
+
+export function mockGetOne(type: MarketType, username: string, title: string) {
+  return MOCK_ITEMS.find(
+    (x) => x.type === type && x.username === username && x.title === title
+  );
+}
