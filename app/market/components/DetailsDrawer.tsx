@@ -32,6 +32,7 @@ export function DetailsDrawer({
   if (!open || !item) return null;
 
   async function download() {
+    if (!item) return;
     setBusy(true);
     setErr(null);
     try {
