@@ -28,7 +28,7 @@ const MarketCard = ({ title, nodes, price }: { title: string, nodes: number, pri
 
 export default function Market() {
   return (
-    <section id="market" className="py-32 px-8 md:px-20 border-b border-white/5 bg-[#090909]">
+    <section id="market" className="py-20 px-6 md:px-20 border-b border-white/5 bg-[#090909]">
       <SectionHeading>Marketplace</SectionHeading>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <MarketCard title="SEO Article Engine" nodes={14} price="$49" />

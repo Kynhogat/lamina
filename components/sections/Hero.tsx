@@ -1,40 +1,42 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Terminal } from 'lucide-react';
 import { MonoLabel } from '@/components/ui/theme';
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen flex flex-col justify-center px-8 md:px-20 border-b border-white/5 relative overflow-hidden">
-       {/* Subtle Noise Texture Overlay */}
-       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-
-       <div className="max-w-3xl pt-20">
-         <MonoLabel color="text-[#15FF00]">Node-Based Orchestration</MonoLabel>
-         <h1 className="text-6xl md:text-8xl font-display font-bold leading-[0.9] tracking-tight mt-6 mb-8">
-           BUILD WORKFLOWS<br/>YOU CAN <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F0FFF0] to-neutral-500">OWN.</span>
-         </h1>
-         <p className="text-xl text-neutral-400 max-w-xl leading-relaxed mb-10">
-           Lamina turns prompts, APIs, and logic into deployable systems. 
-           Stop chatting. Start engineering.
-         </p>
-         
-         <div className="flex gap-4 items-center">
-           <button className="bg-[#15FF00] text-black px-8 py-4 font-bold font-mono text-sm hover:bg-[#12db00] transition-colors flex items-center gap-2 group">
-             OPEN PLAYGROUND
-             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
-           </button>
-           <button className="px-8 py-4 font-mono text-sm border border-white/20 hover:border-white/50 transition-colors text-[#F0FFF0]">
-             REQUEST ACCESS
-           </button>
+    <section id="hero" className="min-h-screen flex flex-col justify-center px-6 md:px-20 border-b border-white/5 relative overflow-hidden py-20 md:py-0">
+       
+       <div className="max-w-4xl relative z-10">
+         {/* Technical Badge */}
+         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#15FF00]/30 bg-[#15FF00]/5 mb-6 md:mb-8 backdrop-blur-md">
+            <div className="w-2 h-2 bg-[#15FF00] rounded-full animate-pulse" />
+            <MonoLabel color="text-[#15FF00]">Public Beta Live</MonoLabel>
          </div>
 
-         <div className="mt-20 flex gap-8 border-t border-white/10 pt-8">
-           {['Versioned .flow files', 'Audit Logs', 'Deterministic'].map((item) => (
-             <div key={item} className="flex items-center gap-2 font-mono text-xs text-neutral-500 uppercase">
-               <CheckCircle2 size={12} className="text-[#15FF00]" />
-               {item}
+         {/* Responsive Headline */}
+         <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.9] tracking-tighter mb-6 md:mb-8 uppercase text-white break-words">
+           Graphically <br/>
+           <span className="text-[#15FF00] selection:text-white">Engineered</span> <br/>
+           Intelligence.
+         </h1>
+
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+             <p className="text-base md:text-lg text-neutral-400 leading-relaxed font-mono pl-4 border-l-2 border-[#15FF00]">
+                Lamina is the first text-to-text AI Nodebuilder. 
+                Move from "prompt engineering" to "flow architecture" with a drag-and-drop canvas.
+             </p>
+             
+             <div className="flex flex-col gap-4 w-full md:w-auto">
+               <button className="w-full md:w-auto bg-[#F0FFF0] text-black px-6 md:px-8 py-3 md:py-4 font-bold font-mono text-sm hover:bg-[#15FF00] transition-all flex items-center justify-between md:justify-center gap-4 group">
+                 INITIALIZE PLAYGROUND
+                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
+               </button>
+               
+               <div className="flex justify-center md:justify-start gap-6 text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
+                  <span className="flex items-center gap-1 hover:text-[#15FF00] cursor-help"><Terminal size={12}/> Open_Source</span>
+                  <span className="flex items-center gap-1 hover:text-[#15FF00] cursor-help"><Terminal size={12}/> Self_Hostable</span>
+               </div>
              </div>
-           ))}
          </div>
        </div>
     </section>

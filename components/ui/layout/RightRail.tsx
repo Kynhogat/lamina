@@ -2,111 +2,88 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap } from 'lucide-react';
+import { Activity, Server, Cpu, GitCommit } from 'lucide-react';
 import { MonoLabel } from '@/components/ui/theme';
 
 export default function RightRail({ activeSection }: { activeSection: string }) {
   return (
-    <aside className="w-80 fixed right-0 top-0 bottom-0 border-l border-white/10 hidden xl:block bg-[#0C0F0C] p-8 z-50">
-      <AnimatePresence mode="wait">
+    <aside className="w-80 fixed right-0 top-0 bottom-0 border-l border-white/10 hidden xl:flex flex-col bg-[#070807]/90 backdrop-blur-sm p-6 z-50">
+      
+      <div className="flex-1 flex flex-col gap-10">
         
-        {/* HERO CONTEXT */}
-        {activeSection === 'hero' && (
-          <motion.div 
-            key="hero-panel"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            className="space-y-8"
-          >
-            <div className="bg-neutral-900 border border-white/10 p-4 rounded-sm">
-              <MonoLabel>Live Snapshot</MonoLabel>
-              <div className="mt-4 space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-neutral-400">Flow</span>
-                  <span className="text-white">Daily Blog Engine</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-neutral-400">Runs Today</span>
-                  <span className="text-[#15FF00]">42</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-neutral-400">Success</span>
-                  <span className="text-white">99.1%</span>
-                </div>
-              </div>
-              <div className="mt-4 pt-4 border-t border-white/5 font-mono text-[10px] text-neutral-600">
-                LAST DEPLOY: 14m ago
-              </div>
+        {/* --- SECTION 1: SYSTEM TELEMETRY (Always Visible) --- */}
+        <section>
+            <div className="flex items-center gap-2 mb-4 border-b border-[#15FF00]/20 pb-2">
+                <Activity size={14} className="text-[#15FF00]" />
+                <MonoLabel color="text-[#15FF00]">Live Telemetry</MonoLabel>
             </div>
-            <div className="p-4 bg-white/5 text-center">
-               <p className="text-xs text-neutral-400 mb-2">Read the documentation</p>
-               <a href="#" className="text-[#F0FFF0] underline decoration-[#F0FFF0]/30 hover:decoration-[#F0FFF0]">docs.lamina.dev</a>
-            </div>
-          </motion.div>
-        )}
-
-        {/* PLAYGROUND CONTEXT */}
-        {activeSection === 'playground' && (
-           <motion.div 
-             key="play-panel"
-             initial={{ opacity: 0, x: 20 }}
-             animate={{ opacity: 1, x: 0 }}
-             exit={{ opacity: 0, x: 20 }}
-           >
-              <MonoLabel>Try this in 10s</MonoLabel>
-              <ul className="mt-4 space-y-4">
-                {['Drag "Input" Node', 'Connect to "Transform"', 'Hit Run Demo'].map((step, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-neutral-300">
-                    <div className="w-5 h-5 rounded-full border border-[#F0FFF0]/20 flex items-center justify-center text-[10px] text-[#F0FFF0]">{i+1}</div>
-                    {step}
-                  </li>
+            <div className="space-y-3">
+                {[
+                    { label: "Active Nodes", val: "8,492", icon: Server },
+                    { label: "Avg Latency", val: "24ms", icon: Activity },
+                    { label: "Token Rate", val: "45k/s", icon: Cpu },
+                ].map((stat, i) => (
+                    <div key={i} className="flex justify-between items-center font-mono text-xs">
+                        <span className="text-neutral-500 flex items-center gap-2">
+                            <stat.icon size={10} /> {stat.label}
+                        </span>
+                        <span className="text-[#F0FFF0]">{stat.val}</span>
+                    </div>
                 ))}
-              </ul>
-           </motion.div>
-        )}
-
-        {/* MARKET CONTEXT */}
-        {activeSection === 'market' && (
-          <motion.div 
-            key="market-panel"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-          >
-            <MonoLabel>Trending Tags</MonoLabel>
-            <div className="flex flex-wrap gap-2 mt-4">
-              {['#SEO', '#Email', '#Notion', '#Shopify', '#Research'].map(tag => (
-                <span key={tag} className="px-2 py-1 bg-white/5 text-xs text-neutral-400 hover:text-[#F0FFF0] hover:bg-white/10 cursor-pointer transition-colors">
-                  {tag}
-                </span>
-              ))}
             </div>
-          </motion.div>
-        )}
+            {/* Visual graph placeholder */}
+            <div className="mt-4 h-12 flex items-end gap-[2px] opacity-30">
+                {[40, 60, 30, 80, 50, 90, 20, 40, 60, 70, 50, 30, 80, 40, 90].map((h, i) => (
+                    <div key={i} className="bg-[#15FF00] w-full" style={{ height: `${h}%` }}></div>
+                ))}
+            </div>
+        </section>
 
-        {/* DEFAULT CONTEXT */}
-        {!['hero', 'playground', 'market'].includes(activeSection) && (
-           <motion.div 
-             key="default-panel"
-             initial={{ opacity: 0, x: 20 }}
-             animate={{ opacity: 1, x: 0 }}
-             exit={{ opacity: 0, x: 20 }}
-             className="h-full flex flex-col justify-end pb-8"
-           >
-              <div className="border border-[#15FF00]/30 p-4">
-                <div className="flex items-center gap-2 text-[#15FF00] text-sm font-bold mb-2">
-                  <Zap size={14} />
-                  EARLY ACCESS
-                </div>
-                <p className="text-xs text-neutral-400 mb-4">
-                  Join the waiting list for the beta release.
-                </p>
-                <button className="w-full bg-white/10 py-2 text-xs font-mono hover:bg-white/20">JOIN LIST</button>
-              </div>
-           </motion.div>
-        )}
-      </AnimatePresence>
+        {/* --- SECTION 2: CONTEXT AWARE (Dynamic) --- */}
+        <section className="flex-1">
+             <div className="flex items-center gap-2 mb-4 border-b border-white/10 pb-2">
+                <GitCommit size={14} className="text-neutral-400" />
+                <MonoLabel>Context: {activeSection}</MonoLabel>
+            </div>
+            
+            <AnimatePresence mode="wait">
+                <motion.div 
+                    key={activeSection}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="glass-panel p-4 rounded-sm text-xs text-neutral-400 font-mono leading-relaxed"
+                >
+                    {activeSection === 'hero' && (
+                        <p>Lamina Engine v2.4 initialized. Ready for visual orchestration. Scroll to explore the node architecture.</p>
+                    )}
+                    {activeSection === 'playground' && (
+                        <div>
+                            <p className="mb-2 text-[#F0FFF0]">INTERACTIVE_MODE</p>
+                            <p>Simulation active. This canvas represents a standard Webhook → Logic → Database pipeline.</p>
+                        </div>
+                    )}
+                    {activeSection === 'market' && (
+                        <p>Community modules are pre-verified for security. Import strictly typed JSON definitions directly into your canvas.</p>
+                    )}
+                    {!['hero', 'playground', 'market'].includes(activeSection) && (
+                        <p>Reading documentation specs... <br/><br/> All workflows export to standard .flow JSON format for version control.</p>
+                    )}
+                </motion.div>
+            </AnimatePresence>
+        </section>
+      </div>
+
+      {/* Footer CTA */}
+      <div className="mt-auto pt-6 border-t border-white/10">
+        <div className="flex items-center justify-between text-[10px] font-mono text-neutral-500 mb-2">
+            <span>SEATS REMAINING</span>
+            <span>142/500</span>
+        </div>
+        <button className="w-full bg-[#15FF00] text-black font-bold py-3 text-xs font-mono tracking-tighter hover:bg-[#12db00] transition-colors">
+          CLAIM_EARLY_ACCESS
+        </button>
+      </div>
     </aside>
   );
 }
