@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link'; // Import Link for navigation
 import InteractiveLesson from './components/InteractiveLesson';
 import { ArrowRight } from 'lucide-react';
 
@@ -64,11 +65,11 @@ export default function DocsPage() {
         </div>
       </section>
 
-      {/* Next Steps */}
+      {/* NAVIGATION FOOTER */}
       <div className="pt-12 flex justify-end">
-        <button className="flex items-center gap-2 text-[#15FF00] hover:underline font-mono uppercase text-sm tracking-wider">
+        <Link href="/docs/installation" className="flex items-center gap-2 text-[#15FF00] hover:underline font-mono uppercase text-sm tracking-wider">
           Next: Installation <ArrowRight size={16} />
-        </button>
+        </Link>
       </div>
 
     </div>
