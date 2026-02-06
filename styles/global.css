@@ -1,31 +1,75 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    background-color: #070807;
-    /* The Technical Grid Background */
-    background-image: 
-      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    overflow-x: hidden; /* Prevents horizontal scroll on mobile */
-  }
+:root {
+  /* --- LIGHT MODE VARIABLES --- */
+  --background: #F8FAFC;  /* Slate 50 */
+  --foreground: #0F172A;  /* Slate 900 */
+  
+  /* GRID LINES: Dark Slate at 6% opacity. 
+     Adjust the 0.06 up to 0.1 if you want stronger lines. */
+  --grid-color: rgba(15, 23, 42, 0.5);
+}
+
+.dark {
+  /* --- DARK MODE VARIABLES --- */
+  --background: #070807;  /* Deep Charcoal */
+  --foreground: #F0FFF0;  /* Mint White */
+  
+  /* GRID LINES: White at 5% opacity */
+  --grid-color: rgba(255, 255, 255, 0.05);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  /* --- THE LINEAR GRID --- */
+  /* This creates a graph-paper look */
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  
+  /* Size of the grid squares (Width x Height) */
+  background-size: 40px 40px;
+  
+  /* Keeps the grid fixed while content scrolls over it */
+  background-attachment: fixed;
+  
+  /* Optional: Offsets the grid slightly so it doesn't hug the edge perfectly */
+  background-position: center top;
 }
 
 @layer utilities {
-  /* The Green "Paint Splash" Effect */
-  .pencil-splash {
-    background: radial-gradient(circle, rgba(21, 255, 0, 0.12) 0%, transparent 60%);
-    filter: blur(50px);
-    pointer-events: none;
-    mix-blend-mode: screen;
+  .glass-panel {
+    /* The backdrop-blur will look really cool over the lines */
+    @apply bg-white/70 dark:bg-[#070807]/80 backdrop-blur-xl border border-slate-200/60 dark:border-white/10;
   }
   
-  .glass-panel {
-    background: rgba(12, 15, 12, 0.8);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  .font-display {
+    font-family: system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.02em;
   }
+  
+  .pencil-splash {
+    background: radial-gradient(circle at center, rgba(21, 255, 0, 0.35) 0%, rgba(21, 255, 0, 0.05) 50%, transparent 70%);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    filter: blur(80px);
+    mix-blend-mode: screen; 
+    pointer-events: none;
+    animation: blob-morph 15s ease-in-out infinite;
+  }
+}
+
+@keyframes blob-morph {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
 }

@@ -7,34 +7,62 @@
 @tailwind utilities;
 
 :root {
-  --background: #070807;
-  --foreground: #F0FFF0;
-  --neon-green: #15FF00;
+  /* --- LIGHT MODE VARIABLES --- */
+  --background: #F8FAFC;  /* Slate 50 */
+  --foreground: #0F172A;  /* Slate 900 */
+  
+  /* UPDATED: Increased opacity to 0.08 (8%) so it's visible on white */
+  --grid-color: rgba(15, 23, 42, 0.08); 
+}
+
+.dark {
+  /* --- DARK MODE VARIABLES --- */
+  --background: #070807;  /* Deep Charcoal */
+  --foreground: #F0FFF0;  /* Mint White */
+  
+  /* Dark mode dots (White at 5% opacity) */
+  --grid-color: rgba(255, 255, 255, 0.05);
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  /* --- THE GLOBAL GRID --- */
+  /* 1. Creates the dot pattern using the variables above */
+  background-image: radial-gradient(circle, var(--grid-color) 1px, transparent 1px);
   
-  /* TECHNICAL GRID BACKGROUND */
-  background-image: 
-    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+  /* 2. Spacing: 32px gap between dots */
+  background-size: 32px 32px;
+  
+  /* 3. Fixed: Dots stay still while content scrolls (Parallax feel) */
+  background-attachment: fixed;
 }
 
 @layer utilities {
-  /* Glass Panel for Rails - Darker and blurrier to stand out over the splashes */
   .glass-panel {
-    background: rgba(7, 8, 7, 0.85); 
-    backdrop-filter: blur(12px);
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    @apply bg-white/70 dark:bg-[#070807]/80 backdrop-blur-xl border border-slate-200/60 dark:border-white/10;
   }
   
-  /* Font utilities */
   .font-display {
     font-family: system-ui, -apple-system, sans-serif;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
   }
+  
+  .pencil-splash {
+    background: radial-gradient(circle at center, rgba(21, 255, 0, 0.35) 0%, rgba(21, 255, 0, 0.05) 50%, transparent 70%);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    filter: blur(80px);
+    mix-blend-mode: screen; 
+    pointer-events: none;
+    animation: blob-morph 15s ease-in-out infinite;
+  }
+}
+
+@keyframes blob-morph {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
 }
