@@ -53,7 +53,7 @@ export function AuthModal({
         <div className="flex items-center justify-between p-5 border-b border-white/10">
           <div>
             <MonoLabel color="text-[#15FF00]">AUTH</MonoLabel>
-            <div className="text-xl font-display font-bold text-mint mt-1">{title}</div>
+            <div className="text-xl font-display font-bold text-white mt-1">{title}</div>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-white/5">
             <X size={16} className="text-neutral-400" />
@@ -65,7 +65,7 @@ export function AuthModal({
             <button
               onClick={() => setMode("login")}
               className={`flex-1 py-2 font-mono text-xs border ${
-                mode === "login" ? "border-[#15FF00] bg-[#15FF00]/5 text-mint" : "border-white/10 text-neutral-400 hover:text-mint"
+                mode === "login" ? "border-[#15FF00] bg-[#15FF00]/5 text-white" : "border-white/10 text-neutral-400 hover:text-white"
               }`}
             >
               LOGIN
@@ -73,7 +73,7 @@ export function AuthModal({
             <button
               onClick={() => setMode("register")}
               className={`flex-1 py-2 font-mono text-xs border ${
-                mode === "register" ? "border-[#15FF00] bg-[#15FF00]/5 text-mint" : "border-white/10 text-neutral-400 hover:text-mint"
+                mode === "register" ? "border-[#15FF00] bg-[#15FF00]/5 text-white" : "border-white/10 text-neutral-400 hover:text-white"
               }`}
             >
               REGISTER
@@ -93,7 +93,7 @@ export function AuthModal({
               <input
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="mt-2 w-full bg-transparent outline-none text-sm text-mint font-mono"
+                className="mt-2 w-full bg-transparent outline-none text-sm text-white font-mono"
                 placeholder="kyn"
               />
             </div>
@@ -104,7 +104,7 @@ export function AuthModal({
                 <input
                   value={displayname}
                   onChange={(e) => setDisplayname(e.target.value)}
-                  className="mt-2 w-full bg-transparent outline-none text-sm text-mint font-mono"
+                  className="mt-2 w-full bg-transparent outline-none text-sm text-white font-mono"
                   placeholder="Kyn"
                 />
               </div>
@@ -116,7 +116,7 @@ export function AuthModal({
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
-                className="mt-2 w-full bg-transparent outline-none text-sm text-mint font-mono"
+                className="mt-2 w-full bg-transparent outline-none text-sm text-white font-mono"
                 placeholder="••••••••"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") submit();

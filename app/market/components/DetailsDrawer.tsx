@@ -86,7 +86,7 @@ export function DetailsDrawer({
         <div className="flex items-start justify-between">
           <div>
             <MonoLabel color="text-[#15FF00]">{item.type}</MonoLabel>
-            <div className="mt-2 text-2xl font-display font-bold text-mint">{item.title}</div>
+            <div className="mt-2 text-2xl font-display font-bold text-white">{item.title}</div>
             <div className="mt-2 text-sm text-neutral-400 font-mono">@{item.username}</div>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-white/5">
@@ -119,12 +119,12 @@ export function DetailsDrawer({
             <div className="mt-2 text-xs text-neutral-400 font-mono leading-relaxed">
               {item.type === "node-c" ? (
                 <>
-                  This is a <span className="text-mint">Python node</span>. Download it, place it in your
+                  This is a <span className="text-white">Python node</span>. Download it, place it in your
                   nodes folder, and register it in your node loader.
                 </>
               ) : (
                 <>
-                  This is a <span className="text-mint">JSON</span> object. Import it into your builder /
+                  This is a <span className="text-white">JSON</span> object. Import it into your builder /
                   template loader.
                 </>
               )}
@@ -145,7 +145,7 @@ export function DetailsDrawer({
             <button
               onClick={del}
               disabled={busy || !authStore.accessToken}
-              className="px-4 py-3 border border-white/20 hover:border-white/50 transition-colors text-mint font-mono text-sm disabled:opacity-60 inline-flex items-center justify-center gap-2"
+              className="px-4 py-3 border border-white/20 hover:border-white/50 transition-colors text-white font-mono text-sm disabled:opacity-60 inline-flex items-center justify-center gap-2"
               title={!authStore.accessToken ? "Sign in required to delete" : "Delete"}
             >
               <Trash2 size={16} />

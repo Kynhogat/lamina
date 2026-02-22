@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Book, Code, Box, Zap, ChevronRight } from 'lucide-react';
+import { Book, Code, Box, Zap } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const SECTIONS = [
   {
@@ -34,45 +34,62 @@ const SECTIONS = [
     ]
   }
 ];
-
 export default function DocSidebar() {
   const pathname = usePathname();
 
   return (
     <nav className="w-64 h-screen sticky top-0 border-r border-white/10 bg-[#070807]/50 backdrop-blur-sm p-6 hidden lg:block overflow-y-auto">
-       <div className="mb-8 flex items-center gap-2 font-display font-bold text-xl tracking-tighter text-white">
-          <Book className="text-[#15FF00]" size={20} />
-          DOCS
-       </div>
+      <div className="mb-8 flex items-center gap-2 font-display font-bold text-xl tracking-tighter text-white">
+        <Book className="text-[#15FF00]" size={20} />
+        DOCS
+      </div>
 
-       <div className="space-y-8">
-         {SECTIONS.map((section) => (
-           <div key={section.title}>
-             <h4 className="flex items-center gap-2 text-xs font-mono uppercase text-neutral-500 mb-4 font-bold tracking-wider">
-               <section.icon size={12} />
-               {section.title}
-             </h4>
-             <ul className="space-y-1 border-l border-white/5 pl-4">
-               {section.items.map((item) => {
-                 const isActive = pathname === item.href;
-                 return (
-                   <li key={item.name}>
-                     <Link 
-                       href={item.href}
-                       className={`block text-sm transition-colors py-1 relative
-                         ${isActive ? 'text-[#15FF00] font-bold' : 'text-neutral-400 hover:text-white'}
-                       `}
-                     >
-                       {isActive && <motion.span layoutId="active-indicator" className="absolute -left-[21px] top-1.5 w-1 h-4 bg-[#15FF00] rounded-r-sm" />}
-                       {item.name}
-                     </Link>
-                   </li>
-                 )
-               })}
-             </ul>
-           </div>
-         ))}
-       </div>
+      <div className="space-y-8">
+        {SECTIONS.map((section) => (
+          <div key={section.title}>
+            <h4 className="flex items-center gap-2 text-xs font-mono uppercase text-neutral-500 mb-4 font-bold tracking-wider">
+              <section.icon size={12} />
+              {section.title}
+            </h4>
+            <ul className="relative space-y-1 border-l border-white/5 pl-4">
+              {section.items.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <li key={item.href} className="relative">
+                    <Link
+                      href={item.href}
+                      className={`block text-sm transition-colors py-2 relative z-10
+                        ${isActive ? 'text-[#15FF00]' : 'text-neutral-400 hover:text-white'}
+                      `}
+                    >
+                      {item.name}
+                      
+                      {isActive && (
+                        <motion.div
+                          layoutId="sidebar-active-indicator"
+                          className="absolute -left-[17px] top-2 bottom-2 w-[2px] bg-[#15FF00]"
+                          initial={false}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 500,
+                            damping: 35,
+                            mass: 1
+                          }}
+                          style={{
+                            boxShadow: "0 0 12px #15FF00",
+                          }}
+                        />
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
     </nav>
   );
 }
