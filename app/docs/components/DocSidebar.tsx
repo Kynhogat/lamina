@@ -1,39 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Book, Code, Box, Zap } from 'lucide-react';
+import { Book } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { SECTIONS } from './../constants';
 
-const SECTIONS = [
-  {
-    title: "Getting Started",
-    icon: Zap,
-    items: [
-      { name: "Introduction", href: "/docs" },
-      { name: "Installation", href: "/docs/installation" },
-      { name: "First Workflow", href: "/docs/tutorial" },
-    ]
-  },
-  {
-    title: "Core Concepts",
-    icon: Box,
-    items: [
-      { name: "Nodes & Edges", href: "/docs/nodes" },
-      { name: "Variables", href: "/docs/variables" },
-      { name: "Logic Gates", href: "/docs/logic" },
-    ]
-  },
-  {
-    title: "API Reference",
-    icon: Code,
-    items: [
-      { name: "REST API", href: "/docs/api" },
-      { name: "Python SDK", href: "/docs/sdk" },
-    ]
-  }
-];
 export default function DocSidebar() {
   const pathname = usePathname();
 
@@ -58,28 +31,21 @@ export default function DocSidebar() {
                   <li key={item.href} className="relative">
                     <Link
                       href={item.href}
-                      className={`block text-sm transition-colors py-2 relative z-10
+                      className={`block text-sm py-2 relative z-10 transition-colors
                         ${isActive ? 'text-[#15FF00]' : 'text-neutral-400 hover:text-white'}
                       `}
                     >
                       {item.name}
-                      
                       {isActive && (
                         <motion.div
-                          layoutId="sidebar-active-indicator"
+                          layoutId="active-pill"
                           className="absolute -left-[17px] top-2 bottom-2 w-[2px] bg-[#15FF00]"
-                          initial={false}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
                           transition={{
                             type: "spring",
-                            stiffness: 500,
-                            damping: 35,
-                            mass: 1
+                            stiffness: 300,
+                            damping: 30
                           }}
-                          style={{
-                            boxShadow: "0 0 12px #15FF00",
-                          }}
+                          style={{ boxShadow: "0 0 15px #15FF00" }}
                         />
                       )}
                     </Link>

@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Terminal, Check, Copy, ChevronRight, AlertCircle, Cpu, ArrowLeft, ArrowRight } from 'lucide-react';
 
-// --- Reusable Code Snippet Component ---
 const CodeBlock = ({ command, label }: { command: string, label?: string }) => {
   const [copied, setCopied] = useState(false);
 
@@ -118,17 +117,6 @@ export default function InstallationPage() {
           </div>
         </div>
       </section>
-
-      {/* --- NAVIGATION FOOTER --- */}
-      <div className="pt-12 flex justify-between border-t border-white/5">
-        <Link href="/docs" className="flex items-center gap-2 text-neutral-400 hover:text-white font-mono uppercase text-sm tracking-wider">
-          <ArrowLeft size={16} /> Back: Intro
-        </Link>
-        
-        <Link href="/docs/tutorial" className="flex items-center gap-2 text-[#15FF00] hover:underline font-mono uppercase text-sm tracking-wider">
-          Next: First Workflow <ArrowRight size={16} />
-        </Link>
-      </div>
 
     </div>
   );
