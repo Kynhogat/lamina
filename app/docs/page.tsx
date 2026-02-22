@@ -64,14 +64,6 @@ export default function DocsPage() {
 </pre>
         </div>
       </section>
-
-      {/* NAVIGATION FOOTER */}
-      <div className="pt-12 flex justify-end">
-        <Link href="/docs/installation" className="flex items-center gap-2 text-[#15FF00] hover:underline font-mono uppercase text-sm tracking-wider">
-          Next: Installation <ArrowRight size={16} />
-        </Link>
-      </div>
-
     </div>
   );
 }
