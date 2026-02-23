@@ -157,7 +157,7 @@ export const marketApi = {
     authStore.clear();
   },
 
-  // -------- MARKET SEARCH (mock fallback) --------
+  // -------- MARKET SEARCH --------
   async searchFiltered(params: {
     searchTerm: string;
     type?: MarketType | "";
