@@ -195,13 +195,7 @@ export const marketApi = {
   }): Promise<{ item: SearchItem; usedMock: boolean; error?: string }> {
     const { type, username, title } = params;
 
-    // If your backend returns metadata separate from file, adjust this.
-    // Right now we assume your search listing already provides enough for details
-    // and details page can work with that + download endpoint.
     try {
-      // OPTIONAL: if you have a metadata endpoint, call it here
-      // For now: just confirm it exists by hitting the GET file endpoint HEAD-ish
-      // (Some servers don’t support HEAD. We'll do GET and not read full body.)
       const base = routeForType(type);
       const res = await fetchText(`${base}/${type}/${encodeURIComponent(username)}/${encodeURIComponent(title)}`, {
         method: "GET",
@@ -211,9 +205,6 @@ export const marketApi = {
 
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-      // We don’t know the server metadata structure, so we return a minimal item:
-      // The UI will show title/user/type and rely on list data for descriptions.
-      // You can enrich later if backend returns JSON.
       const fromMock = mockGetOne(type, username, title);
       if (fromMock) return { item: fromMock, usedMock: false };
 
