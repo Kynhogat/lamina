@@ -36,7 +36,7 @@ export default function LeftRail({ activeSection, sections }: { activeSection: s
            <Share2 className="text-green-600 dark:text-[#15FF00]" size={24} />
            LAMINA
         </div>
-        <div className="text-[10px] font-mono text-slate-500 dark:text-neutral-500 tracking-widest pl-9">FLOW_ENGINE v2.4</div>
+        <div className="text-[10px] font-mono text-slate-500 dark:text-neutral-500 tracking-widest pl-9">FLOW_ENGINE v0.0</div>
       </div>
       
       {/* Nav Items */}

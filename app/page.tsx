@@ -30,7 +30,6 @@ export default function LaminaPage() {
   const sections = ['hero', 'why', 'playground', 'features', 'market', 'trust', 'pricing', 'spec'];
 
   return (
-    // CRITICAL: bg-transparent allows the global body grid to show through
     <div className="min-h-screen font-sans selection:bg-green-500/30 selection:text-green-900 dark:selection:bg-[#15FF00]/30 dark:selection:text-white flex flex-col lg:flex-row relative bg-transparent transition-colors duration-500 overflow-x-hidden">
 
       {/* --- MOBILE HEADER --- */}
@@ -44,7 +43,6 @@ export default function LaminaPage() {
          </button>
       </header>
 
-      {/* --- MOBILE MENU --- */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
@@ -66,12 +64,8 @@ export default function LaminaPage() {
           </motion.div>
         )}
       </AnimatePresence>
-      
-      {/* --- DESKTOP RAILS --- */}
-      <LeftRail activeSection={activeSection} sections={sections} />
 
-      {/* --- MAIN SCROLL AREA --- */}
-      {/* CRITICAL: bg-transparent here too */}
+      <LeftRail activeSection={activeSection} sections={sections} />
       <main className="flex-1 lg:ml-64 xl:mr-80 relative z-[10] pt-20 lg:pt-0 bg-transparent">
         <Hero />
         <Why />

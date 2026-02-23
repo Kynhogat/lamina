@@ -56,7 +56,7 @@ export default function RightRail({ activeSection }: { activeSection: string }) 
                 >
                     {/* Content remains the same, style handled by glass-panel utility */}
                     {activeSection === 'hero' && (
-                        <p>Lamina Engine v2.4 initialized. Ready for visual orchestration. Scroll to explore the node architecture.</p>
+                        <p>Lamina Engine v0.0 initialized. Ready for visual orchestration. Scroll to explore the node architecture.</p>
                     )}
                     {/* ... other states ... */}
                      {!['hero'].includes(activeSection) && (

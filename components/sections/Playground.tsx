@@ -18,7 +18,6 @@ const AppNode = ({ data }: NodeProps) => {
       shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.5)]
       ${data.active ? 'ring-1 ring-green-500 dark:border-green-500' : 'hover:border-slate-300 dark:hover:border-white/30'}
     `}>
-      {/* Mac-style Window Header */}
       <div className="bg-slate-50 dark:bg-white/5 border-b border-slate-100 dark:border-white/5 px-3 py-2 flex items-center justify-between">
          <div className="flex items-center gap-2">
              <div className="flex gap-1">

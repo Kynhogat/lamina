@@ -4,11 +4,10 @@ import { Database, Zap, ArrowRight, Share2 } from 'lucide-react';
 
 export default function Why() {
   return (
-    // bg-transparent ensures the dots are visible
     <section id="why" className="py-32 px-6 md:px-20 border-b border-slate-200/60 dark:border-white/5 bg-transparent transition-colors duration-300">
       <div className="grid md:grid-cols-2 gap-16 items-center">
         
-        {/* LEFT COLUMN: Copy */}
+        {/* LEFT COLUMN */}
         <div>
           <h2 className="text-3xl md:text-5xl font-display font-bold uppercase tracking-tight text-slate-900 dark:text-white mb-8">
             Systems over <span className="text-slate-400 dark:text-neutral-600">Chats</span>
