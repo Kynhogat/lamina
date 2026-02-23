@@ -1,4 +1,3 @@
-// app/market/types.ts
 export type MarketType = "node-c" | "node-g" | "wrktmp";
 
 export type AuthResponse = {

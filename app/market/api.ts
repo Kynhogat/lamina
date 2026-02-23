@@ -1,4 +1,3 @@
-// app/market/api.ts
 import { API_BASE_URL, API_TIMEOUT_MS } from "./config";
 import type {
   AuthResponse,
@@ -15,7 +14,6 @@ import { mockSearch, mockGetOne } from "./mock";
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
 function routeForType(t: MarketType) {
-  // IMPORTANT: This is the ONLY place you change if your backend route differs.
   if (t === "node-c") return "/nodes-custom";
   if (t === "node-g") return "/nodes-grouped";
   return "/workflow-templates";
@@ -303,7 +301,6 @@ export const marketApi = {
     const base = routeForType(input.type);
     const path = `${base}/${input.type}/${encodeURIComponent(input.username)}/${encodeURIComponent(input.oldTitle)}`;
 
-    // Your spec: PUT expects title + descriptions + optional file
     const fd = new FormData();
     fd.append("title", input.title);
     fd.append("shortDescription", input.shortDescription);
