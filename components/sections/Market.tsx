@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Layers, ArrowUpRight } from 'lucide-react';
 import { MonoLabel } from '@/components/ui/theme';
@@ -60,9 +61,9 @@ export default function Market() {
               Don't start from scratch. Clone verified workflows built by the Lamina engineering team.
             </p>
         </div>
-        <button className="px-6 py-3 rounded-lg border border-slate-200 dark:border-white/10 text-slate-600 dark:text-neutral-300 font-mono text-xs font-bold hover:bg-slate-50 dark:hover:bg-white/5 transition-colors uppercase tracking-wider">
+        <Link href="/market" className="px-6 py-3 rounded-lg border border-slate-200 dark:border-white/10 text-slate-600 dark:text-neutral-300 font-mono text-xs font-bold hover:bg-slate-50 dark:hover:bg-white/5 hover:border-green-500 dark:hover:border-[#15FF00] hover:text-green-600 dark:hover:text-[#15FF00] transition-colors uppercase tracking-wider">
             View All Templates
-        </button>
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

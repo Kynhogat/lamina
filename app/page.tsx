@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Menu, X, Share2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LeftRail from '@/components/ui/layout/LeftRail';
@@ -52,15 +53,23 @@ export default function LaminaPage() {
             className="fixed inset-0 top-16 bg-white/95 dark:bg-[#070807]/95 backdrop-blur-xl z-[99] flex flex-col p-8 gap-6 lg:hidden"
           >
              {sections.map(sec => (
-               <a 
-                 key={sec} 
-                 href={`#${sec}`} 
+               <a
+                 key={sec}
+                 href={`#${sec}`}
                  onClick={() => setMobileMenuOpen(false)}
                  className="text-3xl font-display font-bold uppercase tracking-tight text-slate-400 hover:text-slate-900 dark:text-neutral-500 dark:hover:text-[#15FF00] transition-colors"
                >
                  {sec}
                </a>
              ))}
+             <div className="border-t border-slate-200 dark:border-white/10 pt-6 mt-2 flex flex-col gap-6">
+               <Link href="/docs" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-display font-bold uppercase tracking-tight text-green-600 dark:text-[#15FF00] hover:text-green-700 dark:hover:text-[#12db00] transition-colors">
+                 Docs
+               </Link>
+               <Link href="/market" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-display font-bold uppercase tracking-tight text-green-600 dark:text-[#15FF00] hover:text-green-700 dark:hover:text-[#12db00] transition-colors">
+                 Market
+               </Link>
+             </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -79,6 +88,8 @@ export default function LaminaPage() {
         <footer className="py-20 px-8 lg:px-20 border-t border-slate-200 dark:border-white/5 text-slate-400 dark:text-neutral-600 text-xs font-mono uppercase tracking-widest flex flex-col md:flex-row justify-between gap-8 bg-slate-50/50 dark:bg-black/20 backdrop-blur-sm">
            <div>© 2026 LAMINA SYSTEMS INC.</div>
            <div className="flex gap-8">
+             <Link href="/docs" className="hover:text-green-600 dark:hover:text-[#15FF00] transition-colors">Docs</Link>
+             <Link href="/market" className="hover:text-green-600 dark:hover:text-[#15FF00] transition-colors">Market</Link>
              <a href="#" className="hover:text-green-600 dark:hover:text-[#15FF00] transition-colors">X / Twitter</a>
              <a href="#" className="hover:text-green-600 dark:hover:text-[#15FF00] transition-colors">GitHub</a>
              <a href="#" className="hover:text-green-600 dark:hover:text-[#15FF00] transition-colors">Discord</a>

@@ -19,25 +19,25 @@ export function MarketCard({
       type="button"
       onClick={() => onClick?.(item)}
       whileHover={{ y: -4, borderColor: "#15FF00" }}
-      className="text-left border border-white/10 bg-neutral-900/50 p-6 flex flex-col gap-4 group cursor-pointer w-full"
+      className="text-left border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-900/50 p-6 flex flex-col gap-4 group cursor-pointer w-full"
     >
       <div className="flex justify-between items-start">
-        <div className="p-2 bg-white/5 rounded-sm">
-          <Layers size={16} className="text-mint" />
+        <div className="p-2 bg-slate-100 dark:bg-white/5 rounded-sm">
+          <Layers size={16} className="text-green-600 dark:text-mint" />
         </div>
-        <MonoLabel color="text-neutral-500">{item.type}</MonoLabel>
+        <MonoLabel color="text-slate-400 dark:text-neutral-500">{item.type}</MonoLabel>
       </div>
 
       <div>
-        <h3 className="text-lg font-bold text-mint group-hover:text-[#15FF00] transition-colors">
+        <h3 className="text-lg font-bold text-green-700 dark:text-mint group-hover:text-green-600 dark:group-hover:text-[#15FF00] transition-colors">
           {item.title}
         </h3>
-        <p className="text-sm text-neutral-400 mt-1">{item.shortDescription}</p>
+        <p className="text-sm text-slate-500 dark:text-neutral-400 mt-1">{item.shortDescription}</p>
       </div>
 
-      <div className="mt-auto pt-4 border-t border-white/5 flex justify-between items-center font-mono text-sm">
-        <span className="text-neutral-400">@{item.username}</span>
-        <span className="text-mint">OPEN</span>
+      <div className="mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex justify-between items-center font-mono text-sm">
+        <span className="text-slate-500 dark:text-neutral-400">@{item.username}</span>
+        <span className="text-green-600 dark:text-mint">OPEN</span>
       </div>
     </motion.button>
   );

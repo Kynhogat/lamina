@@ -17,7 +17,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <LayoutGroup id="docs-framework">
-      <div className="min-h-screen bg-[#070807] text-[#F0FFF0] flex selection:bg-[#15FF00] selection:text-black">
+      <div className="min-h-screen bg-white dark:bg-[#070807] text-slate-900 dark:text-[#F0FFF0] flex selection:bg-[#15FF00] selection:text-black">
         <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none z-0"></div>
         
         <DocSidebar />
@@ -26,14 +26,14 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
           <div className="flex-1 max-w-4xl mx-auto w-full px-8 lg:px-16 py-20">
             {children}
             
-            <footer className="mt-20 pt-12 border-t border-white/5">
+            <footer className="mt-20 pt-12 border-t border-slate-100 dark:border-white/5">
               <div className="flex justify-between items-center gap-4">
                 {prevPage ? (
-                  <Link 
-                    href={prevPage.href} 
-                    className="group flex flex-col items-start gap-1 text-neutral-400 hover:text-white transition-all"
+                  <Link
+                    href={prevPage.href}
+                    className="group flex flex-col items-start gap-1 text-slate-500 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-white transition-all"
                   >
-                    <span className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-neutral-600 group-hover:text-[#15FF00]">
+                    <span className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-slate-400 dark:text-neutral-600 group-hover:text-green-600 dark:group-hover:text-[#15FF00]">
                       <ArrowLeft size={14} /> Previous
                     </span>
                     <span className="text-lg font-bold">{prevPage.name}</span>
@@ -41,11 +41,11 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
                 ) : <div />}
 
                 {nextPage ? (
-                  <Link 
-                    href={nextPage.href} 
-                    className="group flex flex-col items-end gap-1 text-neutral-400 hover:text-[#15FF00] transition-all text-right"
+                  <Link
+                    href={nextPage.href}
+                    className="group flex flex-col items-end gap-1 text-slate-500 dark:text-neutral-400 hover:text-green-600 dark:hover:text-[#15FF00] transition-all text-right"
                   >
-                    <span className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-neutral-600 group-hover:text-[#15FF00]">
+                    <span className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-slate-400 dark:text-neutral-600 group-hover:text-green-600 dark:group-hover:text-[#15FF00]">
                       Next <ArrowRight size={14} />
                     </span>
                     <span className="text-lg font-bold">{nextPage.name}</span>
