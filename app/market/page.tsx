@@ -74,28 +74,28 @@ export default function MarketPage() {
       <MarketShell title={<>MARKET</>} subtitle={headerSubtitle}>
         <div className="flex items-center justify-between mb-6 gap-4">
           <SectionHeading>
-            Browse <span className="text-neutral-600">Objects</span>
+            Browse <span className="text-slate-400 dark:text-neutral-600">Objects</span>
           </SectionHeading>
 
           <div className="flex items-center gap-3 flex-wrap justify-end">
             {usedMock ? (
-              <div className="flex items-center gap-2 border border-[#15FF00]/30 bg-[#15FF00]/5 px-3 py-2">
-                <AlertCircle size={14} className="text-[#15FF00]" />
-                <MonoLabel color="text-[#15FF00]">Mock data active</MonoLabel>
+              <div className="flex items-center gap-2 border border-green-400 dark:border-[#15FF00]/30 bg-green-50 dark:bg-[#15FF00]/5 px-3 py-2">
+                <AlertCircle size={14} className="text-green-600 dark:text-[#15FF00]" />
+                <MonoLabel color="text-green-600 dark:text-[#15FF00]">Mock data active</MonoLabel>
               </div>
             ) : (
-              <MonoLabel color="text-neutral-500">Backend: online</MonoLabel>
+              <MonoLabel color="text-slate-400 dark:text-neutral-500">Backend: online</MonoLabel>
             )}
 
-            <div className="border border-white/10 bg-neutral-950/40 px-3 py-2">
-              <MonoLabel color="text-neutral-500">USER</MonoLabel>
-              <div className="text-xs font-mono text-mint mt-1">{authedLabel}</div>
+            <div className="border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/40 px-3 py-2">
+              <MonoLabel color="text-slate-400 dark:text-neutral-500">USER</MonoLabel>
+              <div className="text-xs font-mono text-green-600 dark:text-mint mt-1">{authedLabel}</div>
             </div>
 
             {!authStore.accessToken ? (
               <button
                 onClick={() => setAuthOpen(true)}
-                className="px-4 py-3 border border-white/20 hover:border-white/50 transition-colors text-mint font-mono text-sm"
+                className="px-4 py-3 border border-slate-300 dark:border-white/20 hover:border-slate-400 dark:hover:border-white/50 transition-colors text-green-600 dark:text-mint font-mono text-sm"
               >
                 SIGN IN
               </button>
@@ -114,7 +114,7 @@ export default function MarketPage() {
                     setSelected(null);
                     setDetailsOpen(false);
                   }}
-                  className="px-4 py-3 border border-white/20 hover:border-white/50 transition-colors text-mint font-mono text-sm"
+                  className="px-4 py-3 border border-slate-300 dark:border-white/20 hover:border-slate-400 dark:hover:border-white/50 transition-colors text-green-600 dark:text-mint font-mono text-sm"
                 >
                   SIGN OUT
                 </button>
@@ -133,9 +133,9 @@ export default function MarketPage() {
         />
 
         {err ? (
-          <div className="mb-8 border border-white/10 bg-neutral-950/50 p-4">
-            <MonoLabel color="text-neutral-500">Last error</MonoLabel>
-            <div className="mt-2 text-sm text-neutral-400 font-mono break-words">{err}</div>
+          <div className="mb-8 border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/50 p-4">
+            <MonoLabel color="text-slate-400 dark:text-neutral-500">Last error</MonoLabel>
+            <div className="mt-2 text-sm text-slate-500 dark:text-neutral-400 font-mono break-words">{err}</div>
           </div>
         ) : null}
 
@@ -151,7 +151,7 @@ export default function MarketPage() {
           <button
             onClick={() => runSearch(skip + take, "append")}
             disabled={busy}
-            className="px-8 py-3 border border-white/20 hover:border-white/50 transition-colors text-mint font-mono text-sm disabled:opacity-60"
+            className="px-8 py-3 border border-slate-300 dark:border-white/20 hover:border-slate-400 dark:hover:border-white/50 transition-colors text-green-600 dark:text-mint font-mono text-sm disabled:opacity-60"
           >
             {busy ? "LOADING…" : "LOAD MORE"}
           </button>

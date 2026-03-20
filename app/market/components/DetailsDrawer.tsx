@@ -82,49 +82,49 @@ export function DetailsDrawer({
   return (
     <div className="fixed inset-0 z-[180]">
       <div onClick={onClose} className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-      <aside className="absolute right-0 top-0 bottom-0 w-full max-w-xl border-l border-white/10 bg-[#0C0F0C] p-6 overflow-y-auto">
+      <aside className="absolute right-0 top-0 bottom-0 w-full max-w-xl border-l border-slate-200 dark:border-white/10 bg-white dark:bg-[#0C0F0C] p-6 overflow-y-auto">
         <div className="flex items-start justify-between">
           <div>
-            <MonoLabel color="text-[#15FF00]">{item.type}</MonoLabel>
-            <div className="mt-2 text-2xl font-display font-bold text-white">{item.title}</div>
-            <div className="mt-2 text-sm text-neutral-400 font-mono">@{item.username}</div>
+            <MonoLabel color="text-green-600 dark:text-[#15FF00]">{item.type}</MonoLabel>
+            <div className="mt-2 text-2xl font-display font-bold text-slate-900 dark:text-white">{item.title}</div>
+            <div className="mt-2 text-sm text-slate-500 dark:text-neutral-400 font-mono">@{item.username}</div>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-white/5">
-            <X size={16} className="text-neutral-400" />
+          <button onClick={onClose} className="p-2 hover:bg-slate-100 dark:hover:bg-white/5">
+            <X size={16} className="text-slate-400 dark:text-neutral-400" />
           </button>
         </div>
 
         {err ? (
-          <div className="mt-6 border border-white/10 bg-neutral-950/50 p-3 flex gap-2 items-start">
-            <AlertCircle size={14} className="text-[#15FF00] mt-0.5" />
-            <div className="text-xs font-mono text-neutral-400 break-words">{err}</div>
+          <div className="mt-6 border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/50 p-3 flex gap-2 items-start">
+            <AlertCircle size={14} className="text-green-600 dark:text-[#15FF00] mt-0.5" />
+            <div className="text-xs font-mono text-slate-500 dark:text-neutral-400 break-words">{err}</div>
           </div>
         ) : null}
 
-        <div className="mt-6 border-t border-white/10 pt-6 space-y-4">
+        <div className="mt-6 border-t border-slate-200 dark:border-white/10 pt-6 space-y-4">
           <div>
-            <MonoLabel color="text-neutral-500">SHORT</MonoLabel>
-            <div className="mt-2 text-sm text-neutral-300">{item.shortDescription}</div>
+            <MonoLabel color="text-slate-400 dark:text-neutral-500">SHORT</MonoLabel>
+            <div className="mt-2 text-sm text-slate-600 dark:text-neutral-300">{item.shortDescription}</div>
           </div>
 
           <div>
-            <MonoLabel color="text-neutral-500">LONG</MonoLabel>
-            <div className="mt-2 text-sm text-neutral-400 whitespace-pre-wrap">
+            <MonoLabel color="text-slate-400 dark:text-neutral-500">LONG</MonoLabel>
+            <div className="mt-2 text-sm text-slate-500 dark:text-neutral-400 whitespace-pre-wrap">
               {item.longDescription || "—"}
             </div>
           </div>
 
-          <div className="border border-white/10 bg-neutral-950/40 p-4">
-            <MonoLabel color="text-neutral-500">IMPLEMENTATION HINT</MonoLabel>
-            <div className="mt-2 text-xs text-neutral-400 font-mono leading-relaxed">
+          <div className="border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/40 p-4">
+            <MonoLabel color="text-slate-400 dark:text-neutral-500">IMPLEMENTATION HINT</MonoLabel>
+            <div className="mt-2 text-xs text-slate-500 dark:text-neutral-400 font-mono leading-relaxed">
               {item.type === "node-c" ? (
                 <>
-                  This is a <span className="text-white">Python node</span>. Download it, place it in your
+                  This is a <span className="text-slate-900 dark:text-white">Python node</span>. Download it, place it in your
                   nodes folder, and register it in your node loader.
                 </>
               ) : (
                 <>
-                  This is a <span className="text-white">JSON</span> object. Import it into your builder /
+                  This is a <span className="text-slate-900 dark:text-white">JSON</span> object. Import it into your builder /
                   template loader.
                 </>
               )}
@@ -145,7 +145,7 @@ export function DetailsDrawer({
             <button
               onClick={del}
               disabled={busy || !authStore.accessToken}
-              className="px-4 py-3 border border-white/20 hover:border-white/50 transition-colors text-white font-mono text-sm disabled:opacity-60 inline-flex items-center justify-center gap-2"
+              className="px-4 py-3 border border-slate-300 dark:border-white/20 hover:border-slate-400 dark:hover:border-white/50 transition-colors text-slate-900 dark:text-white font-mono text-sm disabled:opacity-60 inline-flex items-center justify-center gap-2"
               title={!authStore.accessToken ? "Sign in required to delete" : "Delete"}
             >
               <Trash2 size={16} />
@@ -154,7 +154,7 @@ export function DetailsDrawer({
           </div>
 
           {!authStore.accessToken ? (
-            <div className="text-xs text-neutral-600 font-mono">
+            <div className="text-xs text-slate-400 dark:text-neutral-600 font-mono">
               AUTH REQUIRED for download/delete (JWT).
             </div>
           ) : null}

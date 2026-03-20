@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Share2, Sun, Moon } from 'lucide-react';
+import { Share2, Sun, Moon, BookOpen, Store } from 'lucide-react';
 
 export default function LeftRail({ activeSection, sections }: { activeSection: string, sections: string[] }) {
   const [isDark, setIsDark] = useState(true);
@@ -67,9 +68,21 @@ export default function LeftRail({ activeSection, sections }: { activeSection: s
       {/* Footer / System Status to fill space */}
       <div className="font-mono text-[10px] text-slate-500 dark:text-neutral-600 border-t border-slate-200 dark:border-white/5 pt-4 space-y-2">
         
-        {/* ADDED: Theme Toggle Button */}
-        <button 
-          onClick={toggleTheme} 
+        {/* Quick Links */}
+        <div className="flex gap-2 mb-4">
+          <Link href="/docs" className="flex items-center gap-1.5 flex-1 p-2 bg-slate-100 dark:bg-white/5 rounded hover:bg-slate-200 dark:hover:bg-white/10 hover:text-green-600 dark:hover:text-[#15FF00] transition-colors text-slate-700 dark:text-neutral-400">
+            <BookOpen size={12} />
+            <span>DOCS</span>
+          </Link>
+          <Link href="/market" className="flex items-center gap-1.5 flex-1 p-2 bg-slate-100 dark:bg-white/5 rounded hover:bg-slate-200 dark:hover:bg-white/10 hover:text-green-600 dark:hover:text-[#15FF00] transition-colors text-slate-700 dark:text-neutral-400">
+            <Store size={12} />
+            <span>MARKET</span>
+          </Link>
+        </div>
+
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
           className="flex items-center gap-2 w-full p-2 bg-slate-100 dark:bg-white/5 rounded hover:bg-slate-200 dark:hover:bg-white/10 transition-colors mb-4 text-slate-700 dark:text-neutral-400"
         >
           {isDark ? <Sun size={12} /> : <Moon size={12} />}

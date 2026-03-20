@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, Terminal } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, Terminal, BookOpen } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -30,11 +31,17 @@ export default function Hero() {
              </p>
              
              <div className="flex flex-col gap-4 w-full md:w-auto">
-               <button className="w-full md:w-auto bg-slate-900 dark:bg-[#F0FFF0] text-white dark:text-black px-6 md:px-8 py-3 md:py-4 font-bold font-mono text-sm hover:bg-slate-800 dark:hover:bg-[#15FF00] transition-all flex items-center justify-between md:justify-center gap-4 group shadow-xl shadow-slate-900/10 dark:shadow-none rounded-sm">
-                 INITIALIZE PLAYGROUND
-                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
-               </button>
-               
+               <div className="flex flex-col sm:flex-row gap-3">
+                 <button className="w-full md:w-auto bg-slate-900 dark:bg-[#F0FFF0] text-white dark:text-black px-6 md:px-8 py-3 md:py-4 font-bold font-mono text-sm hover:bg-slate-800 dark:hover:bg-[#15FF00] transition-all flex items-center justify-between md:justify-center gap-4 group shadow-xl shadow-slate-900/10 dark:shadow-none rounded-sm">
+                   INITIALIZE PLAYGROUND
+                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
+                 </button>
+                 <Link href="/docs" className="w-full md:w-auto px-6 md:px-8 py-3 md:py-4 font-bold font-mono text-sm border border-slate-200 dark:border-white/10 text-slate-700 dark:text-neutral-300 hover:border-green-500 dark:hover:border-[#15FF00] hover:text-green-600 dark:hover:text-[#15FF00] transition-all flex items-center justify-between md:justify-center gap-4 group rounded-sm">
+                   <BookOpen size={16} />
+                   READ THE DOCS
+                 </Link>
+               </div>
+
                <div className="flex justify-center md:justify-start gap-6 text-[10px] font-mono text-slate-500 dark:text-neutral-500 uppercase tracking-wider">
                   <span className="flex items-center gap-1 hover:text-green-600 dark:hover:text-[#15FF00] cursor-help transition-colors"><Terminal size={12}/> Open_Source</span>
                   <span className="flex items-center gap-1 hover:text-green-600 dark:hover:text-[#15FF00] cursor-help transition-colors"><Terminal size={12}/> Self_Hostable</span>

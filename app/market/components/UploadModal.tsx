@@ -81,41 +81,41 @@ export function UploadModal({
 
   return (
     <div className="fixed inset-0 z-[190] bg-black/70 backdrop-blur-sm flex items-center justify-center px-4">
-      <div className="w-full max-w-2xl border border-white/10 bg-[#0C0F0C]">
-        <div className="flex items-center justify-between p-5 border-b border-white/10">
+      <div className="w-full max-w-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0C0F0C]">
+        <div className="flex items-center justify-between p-5 border-b border-slate-200 dark:border-white/10">
           <div>
-            <MonoLabel color="text-[#15FF00]">PUBLISH</MonoLabel>
-            <div className="text-xl font-display font-bold text-mint mt-1">UPLOAD OBJECT</div>
+            <MonoLabel color="text-green-600 dark:text-[#15FF00]">PUBLISH</MonoLabel>
+            <div className="text-xl font-display font-bold text-green-700 dark:text-mint mt-1">UPLOAD OBJECT</div>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-white/5">
-            <X size={16} className="text-neutral-400" />
+          <button onClick={onClose} className="p-2 hover:bg-slate-100 dark:hover:bg-white/5">
+            <X size={16} className="text-slate-400 dark:text-neutral-400" />
           </button>
         </div>
 
         <div className="p-5">
           {!authStore.accessToken ? (
-            <div className="mb-4 border border-white/10 bg-neutral-950/50 p-3 flex gap-2 items-start">
-              <AlertCircle size={14} className="text-[#15FF00] mt-0.5" />
-              <div className="text-xs font-mono text-neutral-400 break-words">
+            <div className="mb-4 border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/50 p-3 flex gap-2 items-start">
+              <AlertCircle size={14} className="text-green-600 dark:text-[#15FF00] mt-0.5" />
+              <div className="text-xs font-mono text-slate-500 dark:text-neutral-400 break-words">
                 You must sign in before you can upload.
               </div>
             </div>
           ) : null}
 
           {err ? (
-            <div className="mb-4 border border-white/10 bg-neutral-950/50 p-3 flex gap-2 items-start">
-              <AlertCircle size={14} className="text-[#15FF00] mt-0.5" />
-              <div className="text-xs font-mono text-neutral-400 break-words">{err}</div>
+            <div className="mb-4 border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/50 p-3 flex gap-2 items-start">
+              <AlertCircle size={14} className="text-green-600 dark:text-[#15FF00] mt-0.5" />
+              <div className="text-xs font-mono text-slate-500 dark:text-neutral-400 break-words">{err}</div>
             </div>
           ) : null}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div className="border border-white/10 bg-neutral-950/60 px-4 py-3">
-              <MonoLabel color="text-neutral-500">TYPE</MonoLabel>
+            <div className="border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/60 px-4 py-3">
+              <MonoLabel color="text-slate-400 dark:text-neutral-500">TYPE</MonoLabel>
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value as MarketType)}
-                className="mt-2 w-full bg-transparent outline-none text-sm text-mint font-mono"
+                className="mt-2 w-full bg-transparent outline-none text-sm text-green-700 dark:text-mint font-mono"
               >
                 {MARKET_TYPES.filter((x) => x.value).map((t) => (
                   <option key={t.value} value={t.value}>
@@ -125,65 +125,65 @@ export function UploadModal({
               </select>
             </div>
 
-            <div className="border border-white/10 bg-neutral-950/60 px-4 py-3">
-              <MonoLabel color="text-neutral-500">USERNAME (owner)</MonoLabel>
+            <div className="border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/60 px-4 py-3">
+              <MonoLabel color="text-slate-400 dark:text-neutral-500">USERNAME (owner)</MonoLabel>
               <input
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="mt-2 w-full bg-transparent outline-none text-sm text-mint font-mono"
+                className="mt-2 w-full bg-transparent outline-none text-sm text-green-700 dark:text-mint font-mono"
                 placeholder="owner username"
               />
-              <div className="mt-2 text-[10px] font-mono text-neutral-600">
+              <div className="mt-2 text-[10px] font-mono text-slate-400 dark:text-neutral-600">
                 If later you derive username from token, you can remove this field.
               </div>
             </div>
 
-            <div className="md:col-span-2 border border-white/10 bg-neutral-950/60 px-4 py-3">
-              <MonoLabel color="text-neutral-500">TITLE</MonoLabel>
+            <div className="md:col-span-2 border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/60 px-4 py-3">
+              <MonoLabel color="text-slate-400 dark:text-neutral-500">TITLE</MonoLabel>
               <input
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="mt-2 w-full bg-transparent outline-none text-sm text-mint font-mono"
+                className="mt-2 w-full bg-transparent outline-none text-sm text-green-700 dark:text-mint font-mono"
                 placeholder="Unique title (per user)"
               />
             </div>
 
-            <div className="md:col-span-2 border border-white/10 bg-neutral-950/60 px-4 py-3">
-              <MonoLabel color="text-neutral-500">SHORT DESCRIPTION</MonoLabel>
+            <div className="md:col-span-2 border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/60 px-4 py-3">
+              <MonoLabel color="text-slate-400 dark:text-neutral-500">SHORT DESCRIPTION</MonoLabel>
               <input
                 value={shortDescription}
                 onChange={(e) => setShortDescription(e.target.value)}
-                className="mt-2 w-full bg-transparent outline-none text-sm text-mint font-mono"
+                className="mt-2 w-full bg-transparent outline-none text-sm text-green-700 dark:text-mint font-mono"
                 placeholder="One-liner"
               />
             </div>
 
-            <div className="md:col-span-2 border border-white/10 bg-neutral-950/60 px-4 py-3">
-              <MonoLabel color="text-neutral-500">LONG DESCRIPTION</MonoLabel>
+            <div className="md:col-span-2 border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/60 px-4 py-3">
+              <MonoLabel color="text-slate-400 dark:text-neutral-500">LONG DESCRIPTION</MonoLabel>
               <textarea
                 value={longDescription}
                 onChange={(e) => setLongDescription(e.target.value)}
-                className="mt-2 w-full bg-transparent outline-none text-sm text-mint font-mono min-h-[120px]"
+                className="mt-2 w-full bg-transparent outline-none text-sm text-green-700 dark:text-mint font-mono min-h-[120px]"
                 placeholder="Full details, install steps, expected inputs/outputs…"
               />
             </div>
 
-            <div className="md:col-span-2 border border-white/10 bg-neutral-950/60 px-4 py-3">
-              <MonoLabel color="text-neutral-500">FILE ({allowedExt})</MonoLabel>
+            <div className="md:col-span-2 border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/60 px-4 py-3">
+              <MonoLabel color="text-slate-400 dark:text-neutral-500">FILE ({allowedExt})</MonoLabel>
               <input
                 type="file"
                 accept={allowedExt}
                 onChange={(e) => setFile(e.target.files?.[0] || null)}
-                className="mt-3 block w-full text-sm font-mono text-neutral-300"
+                className="mt-3 block w-full text-sm font-mono text-slate-600 dark:text-neutral-300"
               />
-              <div className="mt-2 text-[10px] font-mono text-neutral-600">
+              <div className="mt-2 text-[10px] font-mono text-slate-400 dark:text-neutral-600">
                 node-c → .py | node-g / wrktmp → .json
               </div>
             </div>
           </div>
 
           <div className="mt-6 flex items-center justify-between">
-            <div className="text-xs text-neutral-600 font-mono">
+            <div className="text-xs text-slate-400 dark:text-neutral-600 font-mono">
               JWT: {authStore.accessToken ? "SET" : "NOT SET"}
             </div>
 

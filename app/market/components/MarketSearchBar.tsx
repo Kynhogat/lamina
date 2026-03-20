@@ -23,8 +23,8 @@ export function MarketSearchBar({
 }) {
   return (
     <div className="flex flex-col md:flex-row gap-3 md:items-center mb-8">
-      <div className="flex-1 flex items-center gap-3 border border-white/10 bg-neutral-950/60 px-4 py-3">
-        <Search size={16} className="text-neutral-500" />
+      <div className="flex-1 flex items-center gap-3 border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/60 px-4 py-3">
+        <Search size={16} className="text-slate-400 dark:text-neutral-500" />
         <input
           value={value}
           onChange={(e) => onChange(e.target.value)}
@@ -32,14 +32,14 @@ export function MarketSearchBar({
             if (e.key === "Enter") onSubmit();
           }}
           placeholder='Search "nodes", "templates", users...'
-          className="w-full bg-transparent outline-none text-sm text-mint placeholder:text-neutral-600 font-mono"
+          className="w-full bg-transparent outline-none text-sm text-green-700 dark:text-mint placeholder:text-slate-400 dark:placeholder:text-neutral-600 font-mono"
         />
       </div>
 
       <select
         value={type}
         onChange={(e) => onTypeChange(e.target.value as MarketType | "")}
-        className="border border-white/10 bg-neutral-950/60 px-4 py-3 text-sm font-mono text-mint outline-none"
+        className="border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/60 px-4 py-3 text-sm font-mono text-green-700 dark:text-mint outline-none"
       >
         {MARKET_TYPES.map((t) => (
           <option key={t.label} value={t.value}>

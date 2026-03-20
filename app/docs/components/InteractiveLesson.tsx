@@ -12,11 +12,11 @@ import { CheckCircle2, Play, RefreshCcw } from 'lucide-react';
 // Simplified Doc Node
 const DocNode = ({ data }: NodeProps) => (
   <div className={`px-4 py-2 rounded-sm border transition-all duration-300 min-w-[120px] text-center
-    ${data.completed ? 'bg-[#15FF00]/10 border-[#15FF00] shadow-[0_0_15px_rgba(21,255,0,0.3)]' : 'bg-[#0C0F0C] border-white/20'}
+    ${data.completed ? 'bg-green-50 dark:bg-[#15FF00]/10 border-green-500 dark:border-[#15FF00] shadow-[0_0_15px_rgba(21,255,0,0.3)]' : 'bg-white dark:bg-[#0C0F0C] border-slate-300 dark:border-white/20'}
   `}>
-    <Handle type="target" position={Position.Left} className="!w-2 !h-2 !bg-[#15FF00]" />
-    <div className="text-xs font-mono font-bold text-[#F0FFF0] uppercase tracking-wider">{data.label}</div>
-    <Handle type="source" position={Position.Right} className="!w-2 !h-2 !bg-[#15FF00]" />
+    <Handle type="target" position={Position.Left} className="!w-2 !h-2 !bg-green-500 dark:!bg-[#15FF00]" />
+    <div className="text-xs font-mono font-bold text-slate-900 dark:text-[#F0FFF0] uppercase tracking-wider">{data.label}</div>
+    <Handle type="source" position={Position.Right} className="!w-2 !h-2 !bg-green-500 dark:!bg-[#15FF00]" />
   </div>
 );
 const nodeTypes = { docNode: DocNode };
@@ -47,16 +47,16 @@ export default function InteractiveLesson({ title, challenge }: { title: string,
   };
 
   return (
-    <div className="my-8 border border-white/10 rounded-lg overflow-hidden bg-[#050505]">
-      <div className="p-4 border-b border-white/10 flex justify-between items-center bg-white/5">
+    <div className="my-8 border border-slate-200 dark:border-white/10 rounded-lg overflow-hidden bg-slate-50 dark:bg-[#050505]">
+      <div className="p-4 border-b border-slate-200 dark:border-white/10 flex justify-between items-center bg-slate-100 dark:bg-white/5">
         <div>
-          <h3 className="text-sm font-bold text-[#F0FFF0] flex items-center gap-2">
-            <Play size={14} className="text-[#15FF00]" /> {title}
+          <h3 className="text-sm font-bold text-slate-900 dark:text-[#F0FFF0] flex items-center gap-2">
+            <Play size={14} className="text-green-600 dark:text-[#15FF00]" /> {title}
           </h3>
-          <p className="text-xs text-neutral-400 mt-1 font-mono">{challenge}</p>
+          <p className="text-xs text-slate-500 dark:text-neutral-400 mt-1 font-mono">{challenge}</p>
         </div>
         {success && (
-           <button onClick={reset} className="text-xs text-neutral-500 hover:text-white flex items-center gap-1">
+           <button onClick={reset} className="text-xs text-slate-400 dark:text-neutral-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1">
              <RefreshCcw size={12}/> Reset
            </button>
         )}
