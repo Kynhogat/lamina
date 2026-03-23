@@ -1,47 +1,70 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import ReactFlow, { 
-  Background, Handle, Position, useNodesState, useEdgesState, 
-  addEdge, Connection, NodeProps, MarkerType 
+import ReactFlow, {
+  Background, Handle, Position, useNodesState, useEdgesState,
+  addEdge, Connection, NodeProps, MarkerType
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Play, RefreshCcw } from 'lucide-react';
+import { CheckCircle2, Play, RefreshCcw, MessageSquare, Cpu, Send } from 'lucide-react';
 
-// Simplified Doc Node
-const DocNode = ({ data }: NodeProps) => (
-  <div className={`px-4 py-2 rounded-sm border transition-all duration-300 min-w-[120px] text-center
-    ${data.completed ? 'bg-green-50 dark:bg-[#15FF00]/10 border-green-500 dark:border-[#15FF00] shadow-[0_0_15px_rgba(21,255,0,0.3)]' : 'bg-white dark:bg-[#0C0F0C] border-slate-300 dark:border-white/20'}
-  `}>
-    <Handle type="target" position={Position.Left} className="!w-2 !h-2 !bg-green-500 dark:!bg-[#15FF00]" />
-    <div className="text-xs font-mono font-bold text-slate-900 dark:text-[#F0FFF0] uppercase tracking-wider">{data.label}</div>
-    <Handle type="source" position={Position.Right} className="!w-2 !h-2 !bg-green-500 dark:!bg-[#15FF00]" />
-  </div>
-);
+// Lamina-style Doc Node with icon and type label
+const DocNode = ({ data }: NodeProps) => {
+  const Icon = data.icon;
+  return (
+    <div className={`rounded-lg border transition-all duration-300 min-w-[160px] overflow-hidden
+      ${data.completed
+        ? 'bg-green-50 dark:bg-[#15FF00]/10 border-green-500 dark:border-[#15FF00] shadow-[0_0_15px_rgba(21,255,0,0.3)]'
+        : 'bg-white dark:bg-[#0C0F0C] border-slate-300 dark:border-white/20'}
+    `}>
+      <div className="px-3 py-1.5 border-b border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 flex items-center justify-between">
+        <div className="flex items-center gap-1.5">
+          {Icon && <Icon size={10} className="text-green-600 dark:text-[#15FF00]" />}
+          <span className="text-[9px] font-mono text-slate-400 dark:text-neutral-500 uppercase tracking-wider">{data.typeLabel}</span>
+        </div>
+      </div>
+      <div className="px-3 py-2.5 relative">
+        <Handle type="target" position={Position.Left} className="!w-2 !h-2 !bg-green-500 dark:!bg-[#15FF00]" />
+        <div className="text-xs font-mono font-bold text-slate-900 dark:text-[#F0FFF0] tracking-wide">{data.label}</div>
+        <div className="text-[10px] font-mono text-slate-400 dark:text-neutral-600 mt-0.5">{data.detail}</div>
+        <Handle type="source" position={Position.Right} className="!w-2 !h-2 !bg-green-500 dark:!bg-[#15FF00]" />
+      </div>
+    </div>
+  );
+};
 const nodeTypes = { docNode: DocNode };
 
 export default function InteractiveLesson({ title, challenge }: { title: string, challenge: string }) {
   const [nodes, setNodes, onNodesChange] = useNodesState([
-    { id: '1', type: 'docNode', position: { x: 50, y: 50 }, data: { label: 'Input' } },
-    { id: '2', type: 'docNode', position: { x: 250, y: 120 }, data: { label: 'Process' } },
+    { id: '1', type: 'docNode', position: { x: 30, y: 30 }, data: { label: 'User Prompt', typeLabel: 'Input', detail: '"Summarize this..."', icon: MessageSquare } },
+    { id: '2', type: 'docNode', position: { x: 250, y: 80 }, data: { label: 'Claude 3.5', typeLabel: 'LLM', detail: 'model: claude-sonnet', icon: Cpu } },
+    { id: '3', type: 'docNode', position: { x: 470, y: 30 }, data: { label: 'API Response', typeLabel: 'Output', detail: 'POST /v1/result', icon: Send } },
   ]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [success, setSuccess] = useState(false);
+  const [step, setStep] = useState(0);
 
   const onConnect = useCallback((params: Connection) => {
-    // Check if the connection matches the tutorial goal (Source 1 -> Target 2)
-    if (params.source === '1' && params.target === '2') {
+    if (params.source === '1' && params.target === '2' && step === 0) {
+      setStep(1);
+      setNodes((nds) => nds.map(n =>
+        n.id === '1' || n.id === '2' ? { ...n, data: { ...n.data, completed: true } } : n
+      ));
+      setEdges((eds) => addEdge({ ...params, animated: true, style: { stroke: '#15FF00', strokeWidth: 2 } }, eds));
+    } else if (params.source === '2' && params.target === '3' && step === 1) {
+      setStep(2);
       setSuccess(true);
       setNodes((nds) => nds.map(n => ({ ...n, data: { ...n.data, completed: true } })));
       setEdges((eds) => addEdge({ ...params, animated: true, style: { stroke: '#15FF00', strokeWidth: 2 } }, eds));
     } else {
       setEdges((eds) => addEdge(params, eds));
     }
-  }, [setNodes, setEdges]);
+  }, [step, setNodes, setEdges]);
 
   const reset = () => {
     setSuccess(false);
+    setStep(0);
     setEdges([]);
     setNodes((nds) => nds.map(n => ({ ...n, data: { ...n.data, completed: false } })));
   };

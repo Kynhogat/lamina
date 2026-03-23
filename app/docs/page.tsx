@@ -16,8 +16,8 @@ export default function DocsPage() {
         </div>
         <h1 className="text-5xl font-display font-bold mb-6 tracking-tight">Introduction to Lamina</h1>
         <p className="text-xl text-slate-500 dark:text-neutral-400 leading-relaxed max-w-2xl">
-          Lamina is a node-based logic engine. Unlike traditional coding, you build workflows by connecting visual blocks.
-          The best way to learn is to try it.
+          Lamina is the first text-to-text AI Nodebuilder. Move from prompt engineering to flow architecture &mdash; build, audit, and deploy
+          AI pipelines with a drag-and-drop canvas. Open source and self-hostable.
         </p>
       </div>
 
@@ -25,19 +25,24 @@ export default function DocsPage() {
       <section className="space-y-6">
         <h2 className="text-2xl font-bold border-l-4 border-green-500 dark:border-[#15FF00] pl-4">Interactive Tutorial 01</h2>
         <p className="text-slate-500 dark:text-neutral-400">
-          In Lamina, data flows from left to right. To start a process, you must connect an
+          Lamina replaces prompt engineering with <span className="text-slate-900 dark:text-white font-bold">flow architecture</span>. Instead of writing ad-hoc prompts in a chat window,
+          you build reusable AI pipelines by connecting nodes on a visual canvas. Data flows left to right &mdash; connect an
           <span className="text-slate-900 dark:text-white font-mono bg-slate-200 dark:bg-white/10 px-1 mx-1 rounded">Output Handle</span> to an
-          <span className="text-slate-900 dark:text-white font-mono bg-slate-200 dark:bg-white/10 px-1 mx-1 rounded">Input Handle</span>.
+          <span className="text-slate-900 dark:text-white font-mono bg-slate-200 dark:bg-white/10 px-1 mx-1 rounded">Input Handle</span> to wire your pipeline.
         </p>
-        
+        <p className="text-slate-500 dark:text-neutral-400 text-sm">
+          Below is a minimal Lamina flow: a user prompt feeds into an LLM node, which sends its result to an API endpoint.
+          Mix any model &mdash; OpenAI, Anthropic, or local Llama &mdash; in the same pipeline. Every flow is auditable, version-controlled, and deployable as an API in one click.
+        </p>
+
         {/* THE INTERACTIVE COMPONENT */}
-        <InteractiveLesson 
-          title="Connecting Nodes" 
-          challenge="Drag a line from the 'Input' node on the left to the 'Process' node on the right." 
+        <InteractiveLesson
+          title="Build Your First AI Pipeline"
+          challenge="Connect 'User Prompt' → 'Claude 3.5' → 'API Response' to complete the flow."
         />
-        
+
         <div className="bg-yellow-50 dark:bg-neutral-900/50 p-4 border-l-2 border-yellow-500/50 text-sm text-slate-500 dark:text-neutral-400">
-          <strong>Note:</strong> Connections are strictly typed. You cannot connect a String output to a Number input.
+          <strong>Note:</strong> Connections are strictly typed. You cannot connect a String output to a Number input. Each node logs every input and output with millisecond precision for full auditability.
         </div>
       </section>
 
@@ -54,11 +59,13 @@ export default function DocsPage() {
 {`{
   "id": "workflow_01",
   "nodes": [
-    { "id": "n1", "type": "input", "data": { "label": "User Input" } },
-    { "id": "n2", "type": "process", "data": { "model": "gpt-4" } }
+    { "id": "n1", "type": "input", "data": { "label": "User Prompt" } },
+    { "id": "n2", "type": "llm", "data": { "model": "claude-sonnet", "provider": "anthropic" } },
+    { "id": "n3", "type": "output", "data": { "endpoint": "/v1/result" } }
   ],
   "edges": [
-    { "source": "n1", "target": "n2", "id": "e1-2" }
+    { "source": "n1", "target": "n2", "id": "e1-2" },
+    { "source": "n2", "target": "n3", "id": "e2-3" }
   ]
 }`}
 </pre>
