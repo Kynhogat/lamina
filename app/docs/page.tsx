@@ -38,7 +38,7 @@ export default function DocsPage() {
         {/* THE INTERACTIVE COMPONENT */}
         <InteractiveLesson
           title="Build Your First AI Pipeline"
-          challenge="Connect 'User Prompt' → 'Claude 3.5' → 'API Response' to complete the flow."
+          challenge="Wire the nodes: API Entry → LLM Controller → Result Aggregator."
         />
 
         <div className="bg-yellow-50 dark:bg-neutral-900/50 p-4 border-l-2 border-yellow-500/50 text-sm text-slate-500 dark:text-neutral-400">
