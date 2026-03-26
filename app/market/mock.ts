@@ -1,4 +1,3 @@
-// app/market/mock.ts
 import type { SearchItem, MarketType } from "./types";
 
 export const MOCK_ITEMS: SearchItem[] = [
