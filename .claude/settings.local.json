@@ -1,8 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx next:*)",
-      "mcp__Claude_Preview__preview_start"
+      "Bash(find \"C:/Users/School/Desktop/School/lamina\" -type f \\\\\\( -name \"*.tsx\" -o -name \"*.ts\" -o -name \"*.css\" -o -name \"*.json\" \\\\\\) ! -path \"*/.claude/*\" ! -path \"*/.next/*\" ! -path \"*/node_modules/*\" ! -path \"*/worktrees/*\" -exec wc -l {} +)"
     ]
   }
 }

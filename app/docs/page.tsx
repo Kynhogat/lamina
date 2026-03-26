@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link'; // Import Link for navigation
+import Link from 'next/link';
 import InteractiveLesson from './components/InteractiveLesson';
 import { ArrowRight } from 'lucide-react';
 
@@ -9,7 +9,6 @@ export default function DocsPage() {
   return (
     <div className="px-8 py-20 lg:px-16 space-y-12">
       
-      {/* Header */}
       <div>
         <div className="inline-block px-2 py-1 bg-green-100 dark:bg-[#15FF00]/10 border border-green-400 dark:border-[#15FF00]/30 rounded mb-4">
            <span className="text-green-600 dark:text-[#15FF00] text-xs font-mono font-bold uppercase tracking-wider">Documentation v2.4</span>
@@ -21,7 +20,6 @@ export default function DocsPage() {
         </p>
       </div>
 
-      {/* Interactive Tutorial Block */}
       <section className="space-y-6">
         <h2 className="text-2xl font-bold border-l-4 border-green-500 dark:border-[#15FF00] pl-4">Interactive Tutorial 01</h2>
         <p className="text-slate-500 dark:text-neutral-400">
@@ -35,7 +33,6 @@ export default function DocsPage() {
           Mix any model &mdash; OpenAI, Anthropic, or local Llama &mdash; in the same pipeline. Every flow is auditable, version-controlled, and deployable as an API in one click.
         </p>
 
-        {/* THE INTERACTIVE COMPONENT */}
         <InteractiveLesson
           title="Build Your First AI Pipeline"
           challenge="Wire the nodes: API Entry → LLM Controller → Result Aggregator."
@@ -46,7 +43,6 @@ export default function DocsPage() {
         </div>
       </section>
 
-      {/* Code Example Block */}
       <section className="space-y-6 pt-8 border-t border-slate-100 dark:border-white/5">
         <h2 className="text-2xl font-bold">The .flow Standard</h2>
         <p className="text-slate-500 dark:text-neutral-400">

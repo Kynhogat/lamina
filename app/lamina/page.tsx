@@ -1,43 +1,15 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { 
-  Terminal, Layers, Zap, Cpu, Lock, GitBranch, 
-  Play, Box, ArrowRight, CheckCircle2, AlertCircle, FileJson 
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Terminal, Layers, Zap, Lock, GitBranch,
+  Play, Box, ArrowRight, CheckCircle2, FileJson
 } from 'lucide-react';
 
-// --- THEME CONSTANTS ---
-const COLORS = {
-  bg: '#070807',
-  panel: '#0C0F0C',
-  neon: '#15FF00',
-  mint: '#F0FFF0',
-  graphite: '#535353',
-  line: 'rgba(240,255,240,0.1)',
-};
+import { COLORS, SectionHeading, MonoLabel } from '@/components/ui/theme';
 
-// --- TYPOGRAPHY UTILS ---
-// Assuming usage of Tailwind. Add these font families to your config for best results.
-// font-display -> IBM Plex Sans Condensed / Neue Machina
-// font-body -> IBM Plex Sans
-// font-mono -> JetBrains Mono
-
-const SectionHeading = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-3xl md:text-5xl font-display font-bold uppercase tracking-tight text-mint mb-8">
-    {children}
-  </h2>
-);
-
-const MonoLabel = ({ children, color = 'text-mint/60' }: { children: React.ReactNode, color?: string }) => (
-  <span className={`font-mono text-xs tracking-wider uppercase ${color}`}>
-    {children}
-  </span>
-);
-
-// --- MOCK COMPONENTS ---
-
-const PlaygroundSim = () => {
+const LaminaPlaygroundSim = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [logs, setLogs] = useState<string[]>([]);
 
@@ -63,13 +35,11 @@ const PlaygroundSim = () => {
 
   return (
     <div className="border border-white/10 bg-[#0A0A0A] rounded-sm overflow-hidden relative h-[500px] group">
-      {/* Grid Background */}
-      <div className="absolute inset-0 opacity-10" 
+      <div className="absolute inset-0 opacity-10"
            style={{ backgroundImage: `linear-gradient(${COLORS.line} 1px, transparent 1px), linear-gradient(90deg, ${COLORS.line} 1px, transparent 1px)`, backgroundSize: '40px 40px' }}>
       </div>
 
-      {/* Nodes */}
-      <motion.div 
+      <motion.div
         className="absolute top-20 left-20 bg-neutral-900 border border-mint/20 p-4 w-48 shadow-xl z-10"
         drag
         whileHover={{ borderColor: COLORS.neon }}
@@ -94,12 +64,10 @@ const PlaygroundSim = () => {
         <div className="text-sm text-mint">LLM Synthesis</div>
       </motion.div>
 
-      {/* Connection Lines (SVG) */}
       <svg className="absolute inset-0 pointer-events-none stroke-mint/30">
         <path d="M 220 60 C 280 60, 280 140, 320 140" fill="none" strokeWidth="2" />
       </svg>
 
-      {/* Console Overlay */}
       <div className="absolute bottom-0 left-0 right-0 bg-neutral-950 border-t border-white/10 p-4 font-mono text-xs h-40 overflow-y-auto">
         <div className="flex justify-between items-center mb-2 sticky top-0">
           <span className="text-neutral-500">CONSOLE OUT</span>
@@ -155,12 +123,9 @@ const MarketCard = ({ title, nodes, price }: { title: string, nodes: number, pri
   </motion.div>
 );
 
-// --- MAIN PAGE COMPONENT ---
-
 export default function LaminaPage() {
   const [activeSection, setActiveSection] = useState('hero');
   
-  // Setup intersection observer for sections
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -179,7 +144,6 @@ export default function LaminaPage() {
   return (
     <div className="min-h-screen bg-[#070807] text-[#F0FFF0] font-sans selection:bg-[#15FF00] selection:text-black flex">
       
-      {/* --- LEFT RAIL (NAVIGATION) --- */}
       <nav className="w-64 fixed left-0 top-0 bottom-0 border-r border-white/10 hidden lg:flex flex-col justify-between p-8 z-50 bg-[#070807]">
         <div>
           <div className="text-2xl font-bold tracking-tighter mb-12 flex items-center gap-2">
@@ -188,7 +152,6 @@ export default function LaminaPage() {
           </div>
           
           <div className="space-y-1 relative">
-             {/* Progress Line */}
              <div className="absolute left-[3px] top-2 bottom-2 w-[1px] bg-white/10"></div>
              
              {sections.map((sec) => (
@@ -220,12 +183,9 @@ export default function LaminaPage() {
         </div>
       </nav>
 
-      {/* --- CENTER (SCROLLABLE CONTENT) --- */}
       <main className="flex-1 lg:ml-64 lg:mr-80 relative z-10">
         
-        {/* SECTION: HERO */}
         <section id="hero" className="min-h-screen flex flex-col justify-center px-8 md:px-20 border-b border-white/5 relative overflow-hidden">
-           {/* Subtle Noise Texture Overlay */}
            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
            <div className="max-w-3xl pt-20">
@@ -259,7 +219,6 @@ export default function LaminaPage() {
            </div>
         </section>
 
-        {/* SECTION: WHY */}
         <section id="why" className="py-32 px-8 md:px-20 border-b border-white/5 bg-[#0A0A0A]">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -277,25 +236,27 @@ export default function LaminaPage() {
                 ))}
               </div>
             </div>
-            {/* Abstract Diagram */}
-            <div className="relative h-64 border border-dashed border-white/10 flex items-center justify-center font-mono text-xs text-neutral-500">
-               [ SYSTEM DIAGRAM PLACEHOLDER ]
-               <br/> 
-               Input → Transform → Output
+            <div className="relative h-64 border border-dashed border-white/10 rounded-lg flex flex-col items-center justify-center gap-3">
+               <div className="flex items-center gap-3 font-mono text-xs text-neutral-500">
+                 <span className="px-3 py-1.5 border border-white/10 rounded bg-white/5">Input</span>
+                 <span className="text-[#15FF00]">→</span>
+                 <span className="px-3 py-1.5 border border-[#15FF00]/30 rounded bg-[#15FF00]/5 text-[#15FF00]">Transform</span>
+                 <span className="text-[#15FF00]">→</span>
+                 <span className="px-3 py-1.5 border border-white/10 rounded bg-white/5">Output</span>
+               </div>
+               <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-wider">System Architecture</span>
             </div>
           </div>
         </section>
 
-        {/* SECTION: PLAYGROUND */}
         <section id="playground" className="py-32 px-8 md:px-20 border-b border-white/5">
           <div className="flex justify-between items-end mb-12">
             <SectionHeading>The Workbench</SectionHeading>
             <MonoLabel>Interact to test</MonoLabel>
           </div>
-          <PlaygroundSim />
+          <LaminaPlaygroundSim />
         </section>
 
-        {/* SECTION: FEATURES */}
         <section id="features" className="py-32 px-8 md:px-20 border-b border-white/5">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -315,7 +276,6 @@ export default function LaminaPage() {
           </div>
         </section>
 
-        {/* SECTION: MARKET */}
         <section id="market" className="py-32 px-8 md:px-20 border-b border-white/5 bg-[#090909]">
           <SectionHeading>Marketplace</SectionHeading>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -326,7 +286,6 @@ export default function LaminaPage() {
           </div>
         </section>
 
-        {/* SECTION: TRUST */}
         <section id="trust" className="py-32 px-8 md:px-20 border-b border-white/5">
           <SectionHeading>Enterprise Ready</SectionHeading>
           <div className="grid md:grid-cols-2 gap-12">
@@ -343,7 +302,6 @@ export default function LaminaPage() {
           </div>
         </section>
 
-         {/* SECTION: PRICING */}
          <section id="pricing" className="py-32 px-8 md:px-20 border-b border-white/5">
           <SectionHeading>Pricing</SectionHeading>
           <div className="flex flex-col md:flex-row gap-8">
@@ -373,7 +331,6 @@ export default function LaminaPage() {
           </div>
         </section>
 
-        {/* SECTION: SPEC (THE TWIST) */}
         <section id="spec" className="py-32 px-8 md:px-20">
           <div className="flex items-center gap-4 mb-8">
              <FileJson className="text-[#15FF00]" />
@@ -410,7 +367,6 @@ export default function LaminaPage() {
         </footer>
       </main>
 
-      {/* --- RIGHT RAIL (CONTEXT PANEL) --- */}
       <aside className="w-80 fixed right-0 top-0 bottom-0 border-l border-white/10 hidden xl:block bg-[#0C0F0C] p-8 z-50">
         <AnimatePresence mode="wait">
           {activeSection === 'hero' && (
@@ -485,7 +441,6 @@ export default function LaminaPage() {
             </motion.div>
           )}
 
-          {/* Fallback for other sections */}
           {!['hero', 'playground', 'market'].includes(activeSection) && (
              <motion.div 
                key="default-panel"

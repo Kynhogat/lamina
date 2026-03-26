@@ -11,7 +11,6 @@ export default function RightRail({ activeSection }: { activeSection: string }) 
       
       <div className="flex-1 flex flex-col gap-10">
         
-        {/* --- SECTION 1: SYSTEM TELEMETRY (Always Visible) --- */}
         <section>
             <div className="flex items-center gap-2 mb-4 border-b border-green-200 dark:border-[#15FF00]/20 pb-2">
                 <Activity size={14} className="text-green-600 dark:text-[#15FF00]" />
@@ -31,7 +30,6 @@ export default function RightRail({ activeSection }: { activeSection: string }) 
                     </div>
                 ))}
             </div>
-            {/* Visual graph placeholder */}
             <div className="mt-4 h-12 flex items-end gap-[2px] opacity-30">
                 {[40, 60, 30, 80, 50, 90, 20, 40, 60, 70, 50, 30, 80, 40, 90].map((h, i) => (
                     <div key={i} className="bg-green-600 dark:bg-[#15FF00] w-full" style={{ height: `${h}%` }}></div>
@@ -39,7 +37,6 @@ export default function RightRail({ activeSection }: { activeSection: string }) 
             </div>
         </section>
 
-        {/* --- SECTION 2: CONTEXT AWARE (Dynamic) --- */}
         <section className="flex-1">
              <div className="flex items-center gap-2 mb-4 border-b border-slate-200 dark:border-white/10 pb-2">
                 <GitCommit size={14} className="text-slate-400 dark:text-neutral-400" />
@@ -54,11 +51,9 @@ export default function RightRail({ activeSection }: { activeSection: string }) 
                     exit={{ opacity: 0, y: -10 }}
                     className="glass-panel p-4 rounded-sm text-xs text-slate-500 dark:text-neutral-400 font-mono leading-relaxed"
                 >
-                    {/* Content remains the same, style handled by glass-panel utility */}
                     {activeSection === 'hero' && (
                         <p>Lamina Engine v0.0 initialized. Ready for visual orchestration. Scroll to explore the node architecture.</p>
                     )}
-                    {/* ... other states ... */}
                      {!['hero'].includes(activeSection) && (
                         <p>Interacting with section: {activeSection.toUpperCase()}</p>
                     )}
@@ -67,7 +62,6 @@ export default function RightRail({ activeSection }: { activeSection: string }) 
         </section>
       </div>
 
-      {/* Footer CTA */}
       <div className="mt-auto pt-6 border-t border-slate-200 dark:border-white/10">
         <div className="flex items-center justify-between text-[10px] font-mono text-slate-500 dark:text-neutral-500 mb-2">
             <span>SEATS REMAINING</span>

@@ -8,7 +8,6 @@ export function Trust() {
       <SectionHeading>Enterprise Ready</SectionHeading>
       <div className="grid md:grid-cols-2 gap-12">
         
-        {/* Security Card */}
         <div className="glass-panel p-8 rounded-xl relative overflow-hidden group">
            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
               <ShieldCheck size={120} className="text-slate-900 dark:text-white" />
@@ -32,11 +31,13 @@ export function Trust() {
            </ul>
         </div>
 
-        {/* Placeholder for second card or graphic if needed */}
-        <div className="hidden md:flex items-center justify-center p-8 border border-dashed border-slate-300 dark:border-white/10 rounded-xl">
-            <span className="text-sm font-mono text-slate-400 dark:text-neutral-600">
-                [ Certifications & Compliance Logos ]
-            </span>
+        <div className="hidden md:flex flex-col items-center justify-center gap-3 p-8 border border-dashed border-slate-300 dark:border-white/10 rounded-xl">
+            <div className="flex items-center gap-4 text-slate-400 dark:text-neutral-600">
+              <span className="px-3 py-1 border border-slate-200 dark:border-white/10 rounded text-xs font-mono">SOC 2</span>
+              <span className="px-3 py-1 border border-slate-200 dark:border-white/10 rounded text-xs font-mono">GDPR</span>
+              <span className="px-3 py-1 border border-slate-200 dark:border-white/10 rounded text-xs font-mono">ISO 27001</span>
+            </div>
+            <span className="text-[10px] font-mono text-slate-400 dark:text-neutral-600 uppercase tracking-wider">Compliance Pending</span>
         </div>
 
       </div>
@@ -50,7 +51,6 @@ export function Pricing() {
       <SectionHeading>Pricing</SectionHeading>
       <div className="flex flex-col md:flex-row gap-8">
         
-        {/* Free Plan */}
         <div className="flex-1 glass-panel p-8 rounded-xl hover:border-slate-300 dark:hover:border-white/20 transition-all duration-300 hover:shadow-lg dark:hover:shadow-none">
           <div className="flex justify-between items-start mb-4">
              <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Builder</h3>
@@ -76,7 +76,6 @@ export function Pricing() {
           </button>
         </div>
         
-        {/* Pro Plan */}
         <div className="flex-1 border border-green-500/30 bg-green-50/50 dark:bg-[#15FF00]/5 p-8 relative rounded-xl backdrop-blur-sm shadow-xl shadow-green-500/5 dark:shadow-none hover:border-green-500/50 transition-all duration-300">
           <div className="absolute top-0 right-0 bg-green-500 dark:bg-[#15FF00] text-white dark:text-black text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl tracking-wider">
             MOST POPULAR

@@ -76,7 +76,6 @@ const PlaygroundSim = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   return (
-    // This container has a solid background to look like a "window" floating over the grid
     <div className="rounded-xl overflow-hidden h-[500px] bg-slate-50/80 dark:bg-[#080808]/90 backdrop-blur-sm border border-slate-200 dark:border-white/10 shadow-sm relative">
       <div className="absolute top-4 left-4 z-10 bg-white dark:bg-[#0C0F0C] border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-md shadow-sm flex items-center gap-2">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -99,7 +98,6 @@ const PlaygroundSim = () => {
 
 export default function Playground() {
   return (
-    // Section is transparent so the body grid shows around the "PlaygroundSim" window
     <section id="playground" className="py-32 px-6 md:px-20 border-b border-slate-200 dark:border-white/5 bg-transparent">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>

@@ -33,13 +33,12 @@ export default function LaminaPage() {
   return (
     <div className="min-h-screen font-sans selection:bg-green-500/30 selection:text-green-900 dark:selection:bg-[#15FF00]/30 dark:selection:text-white flex flex-col lg:flex-row relative bg-transparent transition-colors duration-500 overflow-x-hidden">
 
-      {/* --- MOBILE HEADER --- */}
       <header className="lg:hidden fixed top-0 left-0 right-0 h-16 glass-panel z-[100] flex items-center justify-between px-6 border-b-0">
          <div className="flex items-center gap-2 font-display font-bold tracking-tight text-xl text-slate-900 dark:text-white">
              <Share2 className="text-green-500 dark:text-[#15FF00]" size={20} />
              LAMINA
          </div>
-         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-slate-900 dark:text-[#F0FFF0]">
+         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label={mobileMenuOpen ? "Close menu" : "Open menu"} className="text-slate-900 dark:text-[#F0FFF0]">
              {mobileMenuOpen ? <X /> : <Menu />}
          </button>
       </header>

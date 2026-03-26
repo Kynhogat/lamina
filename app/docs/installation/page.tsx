@@ -36,7 +36,6 @@ export default function InstallationPage() {
   return (
     <div className="px-8 py-20 lg:px-16 space-y-12">
       
-      {/* --- PAGE HEADER --- */}
       <div>
         <div className="inline-block px-2 py-1 bg-green-100 dark:bg-[#15FF00]/10 border border-green-400 dark:border-[#15FF00]/30 rounded mb-4">
            <div className="flex items-center gap-2">
@@ -51,7 +50,6 @@ export default function InstallationPage() {
         </p>
       </div>
 
-      {/* --- PREREQUISITES --- */}
       <section>
         <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
           <Cpu size={20} /> System Requirements
@@ -71,7 +69,6 @@ export default function InstallationPage() {
         </div>
       </section>
 
-      {/* --- CLI INSTALLATION --- */}
       <section>
         <h2 className="text-2xl font-bold mb-6 border-l-4 border-green-500 dark:border-[#15FF00] pl-4">1. Install CLI</h2>
         <p className="text-slate-500 dark:text-neutral-400 mb-4">
@@ -82,7 +79,6 @@ export default function InstallationPage() {
         <CodeBlock label="YARN" command="yarn global add @lamina/cli" />
       </section>
 
-      {/* --- INITIALIZATION --- */}
       <section>
         <h2 className="text-2xl font-bold mb-6 border-l-4 border-green-500 dark:border-[#15FF00] pl-4">2. Spin Up Engine</h2>
         <p className="text-slate-500 dark:text-neutral-400 mb-6">

@@ -5,12 +5,11 @@ import { motion } from 'framer-motion';
 import { Layers, ArrowUpRight } from 'lucide-react';
 import { MonoLabel } from '@/components/ui/theme';
 
-const MarketCard = ({ title, nodes, price }: { title: string, nodes: number, price: string }) => (
+const MarketPreviewCard = ({ title, nodes, price }: { title: string, nodes: number, price: string }) => (
   <motion.div 
     whileHover={{ y: -4 }}
     className="group relative cursor-pointer"
   >
-    {/* Card Content - Glass Panel sits atop grid */}
     <div className="glass-panel h-full p-6 flex flex-col gap-4 rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-green-900/10 dark:hover:border-[#15FF00]/50 relative z-10">
         
         <div className="flex justify-between items-start">
@@ -39,7 +38,6 @@ const MarketCard = ({ title, nodes, price }: { title: string, nodes: number, pri
           </span>
         </div>
 
-        {/* Hover Arrow Icon */}
         <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 group-hover:-translate-y-1">
             <ArrowUpRight size={16} className="text-green-600 dark:text-[#15FF00]" />
         </div>
@@ -49,7 +47,6 @@ const MarketCard = ({ title, nodes, price }: { title: string, nodes: number, pri
 
 export default function Market() {
   return (
-    // bg-transparent ensures the dots are visible
     <section id="market" className="py-32 px-6 md:px-20 border-b border-slate-200/60 dark:border-white/5 bg-transparent transition-colors duration-300">
       
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -67,10 +64,10 @@ export default function Market() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <MarketCard title="SEO Article Engine" nodes={14} price="$49" />
-        <MarketCard title="Customer Support Triage" nodes={8} price="FREE" />
-        <MarketCard title="Legal Doc Summarizer" nodes={22} price="$120" />
-        <MarketCard title="Email Sentiment Analysis" nodes={5} price="$15" />
+        <MarketPreviewCard title="SEO Article Engine" nodes={14} price="$49" />
+        <MarketPreviewCard title="Customer Support Triage" nodes={8} price="FREE" />
+        <MarketPreviewCard title="Legal Doc Summarizer" nodes={22} price="$120" />
+        <MarketPreviewCard title="Email Sentiment Analysis" nodes={5} price="$15" />
       </div>
     </section>
   );

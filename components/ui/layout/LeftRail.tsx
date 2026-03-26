@@ -8,12 +8,14 @@ import { Share2, Sun, Moon, BookOpen, Store } from 'lucide-react';
 export default function LeftRail({ activeSection, sections }: { activeSection: string, sections: string[] }) {
   const [isDark, setIsDark] = useState(true);
 
-  // Initialize theme on mount
   useEffect(() => {
-    if (document.documentElement.classList.contains('dark')) {
-      setIsDark(true);
-    } else {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') {
+      document.documentElement.classList.remove('dark');
       setIsDark(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      setIsDark(true);
     }
   }, []);
 
@@ -21,9 +23,11 @@ export default function LeftRail({ activeSection, sections }: { activeSection: s
     const root = document.documentElement;
     if (isDark) {
       root.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
       setIsDark(false);
     } else {
       root.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
       setIsDark(true);
     }
   };
@@ -31,7 +35,6 @@ export default function LeftRail({ activeSection, sections }: { activeSection: s
   return (
     <nav className="w-64 fixed left-0 top-0 bottom-0 border-r border-slate-200 dark:border-white/10 hidden lg:flex flex-col justify-between p-6 z-50 bg-white/90 dark:bg-[#070807]/90 backdrop-blur-sm transition-colors duration-300">
       
-      {/* Header */}
       <div>
         <div className="text-3xl font-bold tracking-tighter mb-1 font-display flex items-center gap-2 text-slate-900 dark:text-white">
            <Share2 className="text-green-600 dark:text-[#15FF00]" size={24} />
@@ -40,9 +43,7 @@ export default function LeftRail({ activeSection, sections }: { activeSection: s
         <div className="text-[10px] font-mono text-slate-500 dark:text-neutral-500 tracking-widest pl-9">FLOW_ENGINE v0.0</div>
       </div>
       
-      {/* Nav Items */}
       <div className="space-y-1 relative pl-2">
-        {/* Vertical Guide Line */}
         <div className="absolute left-[15px] top-2 bottom-2 w-[1px] bg-slate-200 dark:bg-white/5"></div>
         
         {sections.map((sec) => (
@@ -65,10 +66,8 @@ export default function LeftRail({ activeSection, sections }: { activeSection: s
         ))}
       </div>
 
-      {/* Footer / System Status to fill space */}
       <div className="font-mono text-[10px] text-slate-500 dark:text-neutral-600 border-t border-slate-200 dark:border-white/5 pt-4 space-y-2">
         
-        {/* Quick Links */}
         <div className="flex gap-2 mb-4">
           <Link href="/docs" className="flex items-center gap-1.5 flex-1 p-2 bg-slate-100 dark:bg-white/5 rounded hover:bg-slate-200 dark:hover:bg-white/10 hover:text-green-600 dark:hover:text-[#15FF00] transition-colors text-slate-700 dark:text-neutral-400">
             <BookOpen size={12} />
@@ -80,9 +79,9 @@ export default function LeftRail({ activeSection, sections }: { activeSection: s
           </Link>
         </div>
 
-        {/* Theme Toggle Button */}
         <button
           onClick={toggleTheme}
+          aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
           className="flex items-center gap-2 w-full p-2 bg-slate-100 dark:bg-white/5 rounded hover:bg-slate-200 dark:hover:bg-white/10 transition-colors mb-4 text-slate-700 dark:text-neutral-400"
         >
           {isDark ? <Sun size={12} /> : <Moon size={12} />}

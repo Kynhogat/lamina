@@ -1,19 +1,11 @@
 import Link from 'next/link';
 import { AlertTriangle, ArrowLeft, Terminal, Activity } from 'lucide-react';
-
-const COLORS = {
-  bg: '#070807',
-  panel: '#0C0F0C',
-  neon: '#15FF00',
-  mint: '#F0FFF0',
-  line: 'rgba(240,255,240,0.1)',
-};
+import { COLORS } from '@/components/ui/theme';
 
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-[#070807] text-[#F0FFF0] font-sans selection:bg-[#15FF00] selection:text-black flex flex-col md:flex-row overflow-hidden">
       
-      {/* --- LEFT RAIL (Static Anchor) --- */}
       <aside className="w-full md:w-64 border-r border-white/10 p-8 flex flex-col justify-between z-10 bg-[#070807]">
         <div>
            <Link href="/" className="text-2xl font-bold tracking-tighter flex items-center gap-2 hover:opacity-80 transition-opacity">
@@ -38,9 +30,7 @@ export default function NotFound() {
         </div>
       </aside>
 
-      {/* --- CENTER (The Glitch) --- */}
       <main className="flex-1 flex flex-col items-center justify-center relative p-8 border-r border-white/10">
-        {/* Background Grid */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
              style={{ 
                backgroundImage: `linear-gradient(${COLORS.line} 1px, transparent 1px), linear-gradient(90deg, ${COLORS.line} 1px, transparent 1px)`, 
@@ -49,14 +39,12 @@ export default function NotFound() {
         </div>
 
         <div className="relative z-10 max-w-lg w-full">
-          {/* The "Ghost Node" Visual */}
           <div className="mb-12 relative h-40 border border-dashed border-white/20 bg-white/5 rounded-sm p-6 flex flex-col justify-between items-center opacity-50">
              <div className="absolute -top-3 -left-3 text-neutral-600 font-mono text-xs">INPUT: UNKNOWN</div>
              <AlertTriangle size={32} className="text-neutral-500" />
              <div className="font-mono text-sm text-neutral-500 text-center">
                 This node has been detached<br/>or does not exist.
              </div>
-             {/* Broken connection line */}
              <div className="absolute -right-12 top-1/2 w-12 border-t border-dashed border-red-500/30"></div>
              <div className="absolute -right-3 top-[calc(50%-4px)] w-2 h-2 rounded-full bg-red-500/50"></div>
           </div>
@@ -83,7 +71,6 @@ export default function NotFound() {
         </div>
       </main>
 
-      {/* --- RIGHT RAIL (Debug Info) --- */}
       <aside className="hidden xl:block w-80 bg-[#0C0F0C] p-8 z-10">
         <div className="border border-white/10 p-4 space-y-6 opacity-70">
           <div className="flex items-center gap-2 text-neutral-500 text-xs font-mono uppercase tracking-wider mb-4 border-b border-white/5 pb-2">

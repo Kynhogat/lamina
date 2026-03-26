@@ -1,4 +1,3 @@
-// app/market/components/AuthModal.tsx
 "use client";
 
 import React, { useMemo, useState } from "react";

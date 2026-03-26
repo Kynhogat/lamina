@@ -110,7 +110,6 @@ export default function MarketPage() {
                 <button
                   onClick={() => {
                     marketApi.logout();
-                    // keep UI honest
                     setSelected(null);
                     setDetailsOpen(false);
                   }}
@@ -162,7 +161,6 @@ export default function MarketPage() {
         open={authOpen}
         onClose={() => setAuthOpen(false)}
         onAuthed={() => {
-          // optional: refresh after login
           runSearch(0, "replace");
         }}
       />

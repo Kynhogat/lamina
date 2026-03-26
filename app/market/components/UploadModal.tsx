@@ -1,4 +1,3 @@
-// app/market/components/UploadModal.tsx
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -42,7 +41,6 @@ export function UploadModal({
       return;
     }
 
-    // cheap validation
     if (type === "node-c" && !file.name.toLowerCase().endsWith(".py")) {
       setErr("node-c expects a .py file.");
       return;
@@ -67,7 +65,6 @@ export function UploadModal({
       onUploaded();
       onClose();
 
-      // reset minimal
       setTitle("");
       setShortDescription("");
       setLongDescription("");

@@ -1,4 +1,3 @@
-// app/market/components/MarketGrid.tsx
 "use client";
 
 import React from "react";

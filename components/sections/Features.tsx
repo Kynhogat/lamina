@@ -3,7 +3,6 @@ import { Terminal, Box, GitBranch } from 'lucide-react';
 
 export default function Features() {
   return (
-    // bg-transparent ensures the dots are visible
     <section id="features" className="py-24 px-6 md:px-20 border-b border-slate-200/60 dark:border-white/5 bg-transparent transition-colors duration-300">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {[

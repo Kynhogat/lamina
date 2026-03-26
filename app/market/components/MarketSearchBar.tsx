@@ -1,4 +1,3 @@
-// app/market/components/MarketSearchBar.tsx
 "use client";
 
 import React from "react";

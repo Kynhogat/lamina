@@ -7,16 +7,17 @@ export const SECTIONS = [
     items: [
       { name: "Introduction", href: "/docs" },
       { name: "Installation", href: "/docs/installation" },
-      { name: "First Workflow", href: "/docs/tutorial" },
+      { name: "Home Screen", href: "/docs/home" },
     ]
   },
   {
     title: "Core Concepts",
     icon: Box,
     items: [
-      { name: "Nodes & Edges", href: "/docs/nodes" },
-      { name: "Variables", href: "/docs/variables" },
-      { name: "Logic Gates", href: "/docs/logic" },
+      { name: "Projects", href: "/docs/projects" },
+      { name: "Workflow Builder", href: "/docs/workflows" },
+      { name: "Nodes & Templates", href: "/docs/nodes" },
+      { name: "Deployments", href: "/docs/deployments" },
     ]
   },
   {

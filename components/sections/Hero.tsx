@@ -4,12 +4,10 @@ import { ArrowRight, Terminal, BookOpen } from 'lucide-react';
 
 export default function Hero() {
   return (
-    // Ensure bg-transparent is here so the grid shows
     <section id="hero" className="min-h-screen flex flex-col justify-center px-6 md:px-20 border-b border-slate-200 dark:border-white/5 relative overflow-hidden py-20 md:py-0 transition-colors duration-300 bg-transparent">
        
        <div className="max-w-4xl relative z-10">
          
-         {/* Technical Badge */}
          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100/80 dark:bg-[#15FF00]/5 border border-slate-200 dark:border-[#15FF00]/30 mb-6 md:mb-8 backdrop-blur-md">
             <div className="w-2 h-2 bg-green-500 dark:bg-[#15FF00] rounded-full animate-pulse" />
             <span className="font-mono text-xs tracking-wider uppercase text-slate-600 dark:text-[#15FF00]">
@@ -17,7 +15,6 @@ export default function Hero() {
             </span>
          </div>
 
-         {/* Responsive Headline */}
          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.9] tracking-tighter mb-6 md:mb-8 uppercase text-slate-900 dark:text-white break-words transition-colors">
            Graphically <br/>
            <span className="text-green-600 dark:text-[#15FF00] selection:text-white">Engineered</span> <br/>

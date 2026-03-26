@@ -9,7 +9,6 @@ import 'reactflow/dist/style.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Play, RefreshCcw, Info, ChevronUp, GripHorizontal, Link, Link2Off } from 'lucide-react';
 
-/* ─── Types ─── */
 type NodeField = { label: string; value: string; hasInput: boolean; linked: boolean; canConnect: boolean };
 type NodeData = {
   label: string; typeId: string; fields: NodeField[];
@@ -20,9 +19,6 @@ const field = (label: string, value: string, canConnect = false, linked = false)
   label, value, hasInput: canConnect, linked, canConnect,
 });
 
-/* ─────────────────────────────────────────────────
-   Lamina Node — 1:1 match with real GenericNode
-   ───────────────────────────────────────────────── */
 const DocNode = ({ data }: NodeProps) => (
   <div
     className={`
@@ -33,7 +29,6 @@ const DocNode = ({ data }: NodeProps) => (
         : 'border-slate-200'}
     `}
   >
-    {/* ── Top activation handle (wide gray bar) ── */}
     <Handle
       type="target"
       position={Position.Top}
@@ -41,7 +36,6 @@ const DocNode = ({ data }: NodeProps) => (
       className="!w-8 !h-[6px] !bg-gray-500 !border-none !rounded-none !z-50 !-top-px"
     />
 
-    {/* ── Header ── */}
     <div className="flex items-center justify-between px-3 py-2 bg-slate-50/60 rounded-t-lg border-b border-slate-100 relative">
       <div className="flex items-center gap-2">
         <div className="p-0.5 hover:bg-slate-100 rounded transition-colors">
@@ -61,11 +55,9 @@ const DocNode = ({ data }: NodeProps) => (
       </div>
     </div>
 
-    {/* ── Parameter rows ── */}
     <div className="py-1">
       {data.fields?.map((f: NodeField, i: number) => (
         <div key={i} className="relative flex flex-col px-3 py-2 group hover:bg-slate-50/60 transition-colors">
-          {/* Left input handle — thin vertical rectangle */}
           {f.canConnect && (
             <Handle
               type="target"
@@ -104,7 +96,6 @@ const DocNode = ({ data }: NodeProps) => (
       ))}
     </div>
 
-    {/* ── Output ports ── */}
     <div className="mt-1 border-t border-slate-100 bg-slate-50/30">
       {data.outputs?.map((output: string, i: number) => (
         <div key={i} className="relative flex items-center justify-end h-9 px-3 hover:bg-slate-50/60 transition-colors">
@@ -120,7 +111,6 @@ const DocNode = ({ data }: NodeProps) => (
       ))}
     </div>
 
-    {/* ── Bottom grip bar ── */}
     <div className="h-[6px] w-full border-t border-slate-100 bg-slate-50/40 rounded-b-lg flex items-center justify-center">
       <GripHorizontal size={10} className="text-slate-300/40" />
     </div>
@@ -129,9 +119,6 @@ const DocNode = ({ data }: NodeProps) => (
 
 const nodeTypes = { docNode: DocNode };
 
-/* ─────────────────────────────────────────────────
-   Interactive Lesson
-   ───────────────────────────────────────────────── */
 export default function InteractiveLesson({ title, challenge }: { title: string; challenge: string }) {
   const [nodes, setNodes, onNodesChange] = useNodesState([
     {
@@ -226,7 +213,6 @@ export default function InteractiveLesson({ title, challenge }: { title: string;
 
   return (
     <div className="my-8 rounded-xl border border-slate-200 dark:border-white/10 overflow-hidden bg-white dark:bg-[#050505] shadow-sm">
-      {/* Toolbar */}
       <div className="flex items-start justify-between gap-4 border-b border-slate-100 dark:border-white/10 bg-slate-50 dark:bg-white/5 px-5 py-4">
         <div className="space-y-1.5">
           <h3 className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-[#F0FFF0]">
@@ -249,7 +235,6 @@ export default function InteractiveLesson({ title, challenge }: { title: string;
         )}
       </div>
 
-      {/* Canvas */}
       <div className="h-[520px] relative">
         <ReactFlow
           nodes={nodes}
@@ -267,7 +252,6 @@ export default function InteractiveLesson({ title, challenge }: { title: string;
           <Background color="#94a3b8" gap={20} size={2} className="dark:!text-white/10" />
         </ReactFlow>
 
-        {/* Success overlay */}
         <AnimatePresence>
           {success && (
             <motion.div

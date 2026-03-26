@@ -1,4 +1,3 @@
-// app/market/components/DetailsDrawer.tsx
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -8,7 +7,6 @@ import { marketApi } from "../api";
 import { authStore } from "../authStore";
 import { MonoLabel } from "./MarketShell";
 
-/* ── Fake node graph data per item type ── */
 const NODE_GRAPHS: Record<string, { nodes: { id: string; label: string; type: string }[]; edges: [string, string][] }> = {
   "node-c": {
     nodes: [
@@ -49,24 +47,19 @@ const NODE_COLORS: Record<string, { bg: string; border: string; text: string }> 
   output:    { bg: "bg-purple-50 dark:bg-purple-500/10", border: "border-purple-200 dark:border-purple-500/30", text: "text-purple-600 dark:text-purple-400" },
 };
 
-/* ── Mini node flow visualisation (pure CSS / flex) ── */
 function NodeFlowViz({ type }: { type: string }) {
   const graph = NODE_GRAPHS[type] ?? NODE_GRAPHS["wrktmp"];
 
-  // Simple: render nodes in a horizontal flow with arrows
-  // For the branching graph (node-g) we do two rows
   const isBranching = type === "node-g";
 
   if (isBranching) {
     return (
       <div className="flex flex-col gap-3 items-center">
-        {/* Row 1: Trigger → Router */}
         <div className="flex items-center gap-2">
           <NodePill node={graph.nodes[0]} />
           <ArrowRight size={14} className="text-slate-300 dark:text-neutral-600" />
           <NodePill node={graph.nodes[1]} />
         </div>
-        {/* Row 2: Branch A and B */}
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2">
             <div className="w-6 h-px bg-slate-300 dark:bg-neutral-600" />
@@ -79,7 +72,6 @@ function NodeFlowViz({ type }: { type: string }) {
             <div className="w-6 h-px bg-slate-300 dark:bg-neutral-600" />
           </div>
         </div>
-        {/* Row 3: Merge → Output */}
         <div className="flex items-center gap-2">
           <NodePill node={graph.nodes[4]} />
           <ArrowRight size={14} className="text-slate-300 dark:text-neutral-600" />
@@ -112,7 +104,6 @@ function NodePill({ node }: { node: { id: string; label: string; type: string } 
   );
 }
 
-/* ── Fake file download (generates a blob on the fly) ── */
 function fakeDownload(filename: string, content: string) {
   const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
   const url = URL.createObjectURL(blob);
@@ -172,7 +163,6 @@ function generateFakeJson(item: SearchItem) {
   );
 }
 
-/* ── Main drawer ── */
 export function DetailsDrawer({
   open,
   item,
@@ -248,7 +238,6 @@ export function DetailsDrawer({
     <div className="fixed inset-0 z-[180]">
       <div onClick={onClose} className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
       <aside className="absolute right-0 top-0 bottom-0 w-full max-w-xl border-l border-slate-200 dark:border-white/10 bg-white dark:bg-[#0C0F0C] p-6 overflow-y-auto">
-        {/* Header */}
         <div className="flex items-start justify-between">
           <div>
             <MonoLabel color="text-green-600 dark:text-[#15FF00]">{item.type}</MonoLabel>
@@ -269,11 +258,9 @@ export function DetailsDrawer({
 
         <div className="mt-6 border-t border-slate-200 dark:border-white/10 pt-6 space-y-6">
 
-          {/* ── Node Flow Visualization ── */}
           <div>
             <MonoLabel color="text-slate-400 dark:text-neutral-500">FLOW GRAPH</MonoLabel>
             <div className="mt-3 border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-neutral-950/40 rounded-xl p-6 relative overflow-hidden">
-              {/* Subtle grid background */}
               <div
                 className="absolute inset-0 opacity-30 dark:opacity-20"
                 style={{
@@ -293,7 +280,6 @@ export function DetailsDrawer({
             </div>
           </div>
 
-          {/* Descriptions */}
           <div>
             <MonoLabel color="text-slate-400 dark:text-neutral-500">SHORT</MonoLabel>
             <div className="mt-2 text-sm text-slate-600 dark:text-neutral-300">{item.shortDescription}</div>
@@ -306,7 +292,6 @@ export function DetailsDrawer({
             </div>
           </div>
 
-          {/* ── Example Files (fake downloads) ── */}
           <div>
             <MonoLabel color="text-slate-400 dark:text-neutral-500">EXAMPLE FILES</MonoLabel>
             <div className="mt-3 grid grid-cols-2 gap-3">
@@ -338,7 +323,6 @@ export function DetailsDrawer({
             </div>
           </div>
 
-          {/* Implementation hint */}
           <div className="border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-neutral-950/40 p-4 rounded-lg">
             <MonoLabel color="text-slate-400 dark:text-neutral-500">IMPLEMENTATION HINT</MonoLabel>
             <div className="mt-2 text-xs text-slate-500 dark:text-neutral-400 font-mono leading-relaxed">
@@ -356,7 +340,6 @@ export function DetailsDrawer({
             </div>
           </div>
 
-          {/* Action buttons */}
           <div className="flex gap-3 pt-2">
             <button
               onClick={download}

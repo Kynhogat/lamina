@@ -1,13 +1,12 @@
 import React from 'react';
 import { SectionHeading } from '@/components/ui/theme';
-import { Database, Zap, ArrowRight, Share2 } from 'lucide-react';
+import { Database, Zap, Share2 } from 'lucide-react';
 
 export default function Why() {
   return (
     <section id="why" className="py-32 px-6 md:px-20 border-b border-slate-200/60 dark:border-white/5 bg-transparent transition-colors duration-300">
       <div className="grid md:grid-cols-2 gap-16 items-center">
         
-        {/* LEFT COLUMN */}
         <div>
           <h2 className="text-3xl md:text-5xl font-display font-bold uppercase tracking-tight text-slate-900 dark:text-white mb-8">
             Systems over <span className="text-slate-400 dark:text-neutral-600">Chats</span>
@@ -40,14 +39,11 @@ export default function Why() {
           </div>
         </div>
         
-        {/* RIGHT COLUMN: Visual Flow Diagram */}
         <div className="relative h-80 w-full flex items-center justify-center">
-           {/* Background Glow */}
            <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
            <div className="relative z-10 flex flex-col gap-6 items-center w-full max-w-sm">
              
-             {/* Node 1: Input */}
              <div className="w-full flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#0C0F0C] border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-2xl">
                  <div className="p-2 bg-slate-100 dark:bg-white/5 rounded-md text-slate-600 dark:text-white">
                     <Database size={18} />
@@ -58,12 +54,10 @@ export default function Why() {
                  </div>
              </div>
 
-             {/* Connector Arrow */}
              <div className="h-8 w-[2px] bg-slate-200 dark:bg-white/10 relative">
                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 border-b-2 border-r-2 border-slate-200 dark:border-white/10 rotate-45 transform"></div>
              </div>
 
-             {/* Node 2: Transform (Active) */}
              <div className="w-full flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#0C0F0C] border border-green-500 dark:border-[#15FF00] shadow-lg shadow-green-500/10 relative overflow-hidden">
                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-green-500 dark:bg-[#15FF00]"></div>
                  <div className="p-2 bg-green-50 dark:bg-[#15FF00]/10 rounded-md text-green-600 dark:text-[#15FF00]">
@@ -76,12 +70,10 @@ export default function Why() {
                  <div className="text-xs font-mono text-slate-400 dark:text-neutral-500">24ms</div>
              </div>
 
-             {/* Connector Arrow */}
              <div className="h-8 w-[2px] bg-slate-200 dark:bg-white/10 relative">
                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 border-b-2 border-r-2 border-slate-200 dark:border-white/10 rotate-45 transform"></div>
              </div>
 
-             {/* Node 3: Output */}
              <div className="w-full flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#0C0F0C] border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-2xl opacity-60">
                  <div className="p-2 bg-slate-100 dark:bg-white/5 rounded-md text-slate-600 dark:text-white">
                     <Share2 size={18} />

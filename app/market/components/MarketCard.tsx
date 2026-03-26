@@ -1,4 +1,3 @@
-// app/market/components/MarketCard.tsx
 "use client";
 
 import React from "react";
